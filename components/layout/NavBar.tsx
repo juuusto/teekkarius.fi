@@ -1,27 +1,34 @@
 import setLanguage from 'next-translate/setLanguage';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
+import HamburgerButton from './HamburgerButton';
+import { useScrollBlock } from '../../hooks/useScrollBlock';
 
 const NavBar = () => {
+  const [burgerOpen, setBurgerOpen] = useState(false);
+  const [blockScroll, allowScroll] = useScrollBlock();
   const { t } = useTranslation('nav');
+
+  burgerOpen ? blockScroll() : allowScroll();
+
+  const toggle = () => setBurgerOpen((v) => !v);
   return (
     <Nav>
       <Link href="/" passHref>
-        <Logo>Teekkarius150</Logo>
+        <Logo>Teekkarius&nbsp;150</Logo>
       </Link>
-      <MobileMenuButton>-</MobileMenuButton>
-      <NavMenu>
-        <NavLinks>
+      <NavMenu burgerOpen={burgerOpen}>
+        <NavLinks burgerOpen={burgerOpen}>
           <Link href="/events" passHref>
-            <A>{t('events')}</A>
+            <A burgerOpen={burgerOpen}>{t('events')}</A>
           </Link>
           <Link href="/" passHref>
-            <A>{t('action')}</A>
+            <A burgerOpen={burgerOpen}>{t('activities')}</A>
           </Link>
           <Link href="/" passHref>
-            <A>{t('companies')}</A>
+            <A burgerOpen={burgerOpen}>{t('companies')}</A>
           </Link>
         </NavLinks>
         <div>
@@ -36,6 +43,7 @@ const NavBar = () => {
           </LanguageButton>
         </div>
       </NavMenu>
+      <HamburgerButton active={burgerOpen} toggle={toggle} />
     </Nav>
   );
 };
@@ -45,7 +53,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 calc(max(1em, (100vw - 1000px) / 2));
+  padding: 0 1em;
   background: #020202;
   color: #fff;
 `;
@@ -55,37 +63,62 @@ const Logo = styled.a`
   font-weight: 900;
   text-decoration: none;
   padding: 0.25em;
-  margin: 1em 1em 1em 0;
+  margin: 0.5em 1em 0.5em 0;
   color: #fff;
 `;
 
-const NavMenu = styled.div`
+const NavMenu = styled.div<{ burgerOpen: boolean }>`
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: ${({ burgerOpen }) => (burgerOpen ? 'column' : 'row')};
+  justify-content: ${({ burgerOpen }) =>
+    burgerOpen ? 'center' : 'space-between'};
   width: 100%;
   max-width: 1024px;
+  color: #fff;
+  transition: color 2s ease;
 
   @media screen and (max-width: 800px) {
-    display: none;
+    display: ${({ burgerOpen }) => (burgerOpen ? 'flex' : 'none')};
+    inset: 0;
+    position: absolute;
+    height: ${({ burgerOpen }) => (burgerOpen ? '100vh' : 'auto')};
+    color: #000;
+    background-color: #fff;
+    transform: ${({ burgerOpen }) =>
+      burgerOpen ? 'translateX(0)' : 'translateX(100%)'};
+    transition: color 2s ease;
   }
 `;
 
-const NavLinks = styled.div`
+const NavLinks = styled.div<{ burgerOpen: boolean }>`
   display: flex;
+  text-align: center;
+  flex-direction: ${({ burgerOpen }) => (burgerOpen ? 'column' : 'row')};
 `;
 
-const A = styled.a`
+const A = styled.a<{ burgerOpen: boolean }>`
   font-weight: 700;
   font-size: 1.25em;
   text-decoration: none;
   padding: 1em 1.25em;
-  color: #fff;
-  transition: background 0.2s ease;
+  color: inherit;
+  position: relative;
 
-  &:hover {
-    background: #1d1d1d;
+  &::after {
+    content: '';
+    height: 2px;
+    width: calc(100% - 2.5em);
+    position: absolute;
+    left: 1.25em;
+    bottom: 0.75em;
+    background-color: ${({ burgerOpen }) => (burgerOpen ? '#000' : '#fff')};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.15s ease-out;
+  }
+  &:hover::after {
+    transform: scaleX(1);
   }
 `;
 
