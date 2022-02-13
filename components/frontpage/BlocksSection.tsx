@@ -45,12 +45,16 @@ const StyledBlocksSection = styled.section`
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  max-width: 1024px;
+  max-width: 1600px;
   width: 100%;
-  padding: 3rem 1.5rem;
-  padding-bottom: 0;
+  padding: 6rem;
+  /* padding-bottom: 0; */
   color: ${({ theme }) => theme.colors.betoni};
+
+  @media screen and (max-width: 800px) {
+    padding: 1.5rem;
+    padding-bottom: 0;
+  }
 `;
 
 const BlockBig = styled.div`

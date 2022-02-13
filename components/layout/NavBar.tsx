@@ -1,6 +1,6 @@
 import setLanguage from 'next-translate/setLanguage';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
 import HamburgerButton from './HamburgerButton';
@@ -13,9 +13,29 @@ const NavBar = () => {
 
   burgerOpen ? blockScroll() : allowScroll();
 
+  const handleScroll = () => {
+    console.log('scrolling');
+  };
+
+  const [opaque, setOpaque] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 50) {
+        setOpaque(true);
+      } else {
+        setOpaque(false);
+      }
+    };
+    // clean up code
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const toggle = () => setBurgerOpen((v) => !v);
   return (
-    <Nav>
+    <Nav onScroll={handleScroll} opaque={opaque}>
       <Container>
         <Link href="/" passHref>
           <Logo>Teekkarius&nbsp;150</Logo>
@@ -25,12 +45,13 @@ const NavBar = () => {
             <Link href="/events" passHref>
               <A burgerOpen={burgerOpen}>{t('events')}</A>
             </Link>
-            <Link href="/" passHref>
+            {/* Nää on piilossa sen aikaa kunnes on sivut tehty niille */}
+            {/* <Link href="/" passHref>
               <A burgerOpen={burgerOpen}>{t('activities')}</A>
             </Link>
             <Link href="/" passHref>
               <A burgerOpen={burgerOpen}>{t('companies')}</A>
-            </Link>
+            </Link> */}
           </NavLinks>
           <div>
             <LanguageButton onClick={async () => await setLanguage('fi')}>
@@ -50,12 +71,15 @@ const NavBar = () => {
   );
 };
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ opaque: boolean }>`
   width: 100%;
   display: flex;
   color: ${({ theme }) => theme.colors.polysteekki};
   position: fixed;
   z-index: 2;
+  background-color: ${({ theme, opaque }) =>
+    opaque ? theme.colors.pimiä : 'none'};
+  transition: background-color 0.3s ease;
 
   a::selection,
   h2::selection,
@@ -97,6 +121,7 @@ const NavMenu = styled.div<{ burgerOpen: boolean }>`
   @media screen and (max-width: 800px) {
     display: ${({ burgerOpen }) => (burgerOpen ? 'flex' : 'none')};
     inset: 0;
+    font-size: 1.5em;
     position: absolute;
     height: ${({ burgerOpen }) => (burgerOpen ? '100vh' : 'auto')};
     color: ${({ theme }) => theme.colors.polysteekki};
