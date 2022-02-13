@@ -3,12 +3,7 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import styled from 'styled-components';
 import Layout from '../components/layout/Layout';
-
-const H1 = styled.h1`
-  font-size: 3.5em;
-  color: ${({ theme }) => theme.colors.test};
-  height: 100%;
-`;
+import Frontpage from '../components/frontpage/Frontpage';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('home');
@@ -20,7 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <H1>{t('common:hello-world')}</H1>
+        <Frontpage />
       </Layout>
     </>
   );

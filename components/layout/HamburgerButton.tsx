@@ -46,7 +46,7 @@ const Line = styled.span<{ active: boolean }>`
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: ${({ active, theme }) => (active ? '#000' : '#fff')};
+  background: ${({ theme }) => theme.colors.polysteekki};
 
   transform-origin: left;
 
