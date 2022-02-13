@@ -1,18 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
 
-const PartnersSection = () => {
+type Partner = {
+  name: string;
+  logoPath: string;
+};
+
+type Props = {
+  partners: Partner[];
+};
+
+const PartnersSection = ({ partners }: Props) => {
   const { t } = useTranslation('home');
   return (
     <Section>
       <Container>
         <H2>{t('partners')}</H2>
         <LogosContainer>
-          <Logo>logo</Logo>
-          <Logo>logo</Logo>
-          <Logo>logo</Logo>
-          <Logo>logo</Logo>
+          {partners.map((partner) => (
+            <Logo key={partner.name}>
+              <Image
+                src={partner.logoPath}
+                alt={partner.name}
+                width="200px"
+                height="200px"
+              />
+            </Logo>
+          ))}
         </LogosContainer>
       </Container>
     </Section>
@@ -49,6 +65,10 @@ const LogosContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   gap: 2rem;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Logo = styled.div`
