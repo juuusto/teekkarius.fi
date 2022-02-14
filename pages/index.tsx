@@ -11,10 +11,10 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>{t('title')}</title>
-        <meta name="description" content="Teekarius-sivu" />
+        <meta name="description" content="Teekkarius 150" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <Layout navColor="pimiä">
         <Frontpage />
       </Layout>
     </>

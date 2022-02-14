@@ -6,6 +6,7 @@ const theme = {
     polysteekki: '#FFDAC6',
     tekniikanpunainen: '#91171F',
     pimiä: '#2A0C4E',
+    pimiäLight: '#063967',
     tupsu: '#07090F',
   },
 };
