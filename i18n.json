@@ -3,6 +3,7 @@
   "defaultLocale": "fi",
   "pages": {
     "*": ["common", "nav"],
-    "/": ["home"]
+    "/": ["home"],
+    "/events": ["events"]
   }
 }

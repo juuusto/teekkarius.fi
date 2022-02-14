@@ -5,14 +5,15 @@ import NavBar from './NavBar';
 
 type PropTypes = {
   children: React.ReactNode;
+  navColor: string;
 };
 
-const Layout = ({ children }: PropTypes) => {
+const Layout = ({ children, navColor }: PropTypes) => {
   return (
     <StyledContainer>
-      <NavBar />
+      <NavBar navColor={navColor} />
       <StyledMain>{children}</StyledMain>
-      <Footer />
+      {/* <Footer /> */}
     </StyledContainer>
   );
 };

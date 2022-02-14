@@ -6,7 +6,11 @@ import useTranslation from 'next-translate/useTranslation';
 import HamburgerButton from './HamburgerButton';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 
-const NavBar = () => {
+type Props = {
+  navColor: string;
+};
+
+const NavBar = ({ navColor }: Props) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const { t } = useTranslation('nav');
@@ -35,12 +39,12 @@ const NavBar = () => {
 
   const toggle = () => setBurgerOpen((v) => !v);
   return (
-    <Nav onScroll={handleScroll} opaque={opaque}>
+    <Nav onScroll={handleScroll} opaque={opaque} navColor={navColor}>
       <Container>
         <Link href="/" passHref>
           <Logo>Teekkarius&nbsp;150</Logo>
         </Link>
-        <NavMenu burgerOpen={burgerOpen}>
+        <NavMenu burgerOpen={burgerOpen} navColor={navColor}>
           <NavLinks burgerOpen={burgerOpen}>
             <Link href="/events" passHref>
               <A burgerOpen={burgerOpen}>{t('events')}</A>
@@ -71,14 +75,14 @@ const NavBar = () => {
   );
 };
 
-const Nav = styled.nav<{ opaque: boolean }>`
+const Nav = styled.nav<{ opaque: boolean; navColor: string }>`
   width: 100%;
   display: flex;
   color: ${({ theme }) => theme.colors.polysteekki};
   position: fixed;
   z-index: 2;
-  background-color: ${({ theme, opaque }) =>
-    opaque ? theme.colors.pimiä : 'none'};
+  background-color: ${({ theme, opaque, navColor }) =>
+    opaque ? theme.colors[navColor] : 'none'};
   transition: background-color 0.3s ease;
 
   a::selection,
@@ -108,7 +112,7 @@ const Logo = styled.a`
   color: inherit;
 `;
 
-const NavMenu = styled.div<{ burgerOpen: boolean }>`
+const NavMenu = styled.div<{ burgerOpen: boolean; navColor: string }>`
   display: flex;
   align-items: center;
   flex-direction: ${({ burgerOpen }) => (burgerOpen ? 'column' : 'row')};
@@ -125,7 +129,7 @@ const NavMenu = styled.div<{ burgerOpen: boolean }>`
     position: absolute;
     height: ${({ burgerOpen }) => (burgerOpen ? '100vh' : 'auto')};
     color: ${({ theme }) => theme.colors.polysteekki};
-    background-color: ${({ theme }) => theme.colors.pimiä};
+    background-color: ${({ theme, navColor }) => theme.colors[navColor]};
     transform: ${({ burgerOpen }) =>
       burgerOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: color 2s ease;
