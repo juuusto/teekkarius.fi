@@ -6,12 +6,14 @@ import NavBar from './NavBar';
 type PropTypes = {
   children: React.ReactNode;
   navColor: string;
+  imageUrl: string;
+  setImage: boolean;
 };
 
-const Layout = ({ children, navColor }: PropTypes) => {
+const Layout = ({ children, navColor, imageUrl, setImage }: PropTypes) => {
   return (
     <StyledContainer>
-      <NavBar navColor={navColor} />
+      <NavBar navColor={navColor} imageUrl={imageUrl} setImage={setImage} />
       <StyledMain>{children}</StyledMain>
       {/* <Footer /> */}
     </StyledContainer>

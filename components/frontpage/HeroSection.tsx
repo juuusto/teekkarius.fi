@@ -11,12 +11,12 @@ const HeroSection = () => {
     <Hero>
       <Container>
         <HeroLogoWrapper>
-          <Image src={logo} alt="" draggable={false} priority />
+          <Image src={logo} alt="" draggable={false} priority layout="fill" />
         </HeroLogoWrapper>
-        <H1>Lorem ipsum dolor, sit amet consectetur adipisicing.</H1>
-        <Link href="/events" passHref>
+        <Slogan>{t('hero')} </Slogan>
+        {/* <Link href="/events" passHref>
           <Button>{t('nav:events')}</Button>
-        </Link>
+        </Link> */}
       </Container>
     </Hero>
   );
@@ -29,9 +29,11 @@ const Hero = styled.section`
   color: ${({ theme }) => theme.colors.polysteekki};
   width: 100%;
   height: 100vh;
-  padding-top: 7rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   background: ${({ theme }) => theme.colors.pimiä};
+  background-image: url('/images/kotitausta.jpg');
+  background-size: cover;
 
   p::selection,
   h2::selection {
@@ -47,24 +49,30 @@ const Container = styled.div`
   justify-content: center;
   text-align: center;
   max-width: 1024px;
+  width: 100%;
   padding: 0 1.5em;
   height: 100vh;
 `;
 
 const HeroLogoWrapper = styled.div`
-  max-width: 50%;
+  width: 80%;
+  height: 60%;
   margin-bottom: 2em;
+  position: relative;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 
   @media screen and (max-width: 800px) {
-    max-width: 70%;
+    width: 90%;
+    height: 30%;
   }
 `;
 
-const H1 = styled.h1`
-  font-size: 2.5rem;
+const Slogan = styled.p`
+  font-size: 2rem;
+  font-family: 'KionaBold';
+  max-width: 40ch;
 `;
 
 const Button = styled.a`
