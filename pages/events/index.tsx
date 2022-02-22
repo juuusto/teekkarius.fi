@@ -16,7 +16,7 @@ const EventsPage = () => {
         <meta name="description" content="Teekkarius 150" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout navColor="pimiäLight">
+      <Layout navColor="pimiäLight" imageUrl="" setImage={false}>
         <EventsSection>
           <CogContainer>
             <Link href="/events/main" passHref>
