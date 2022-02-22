@@ -24,8 +24,8 @@ const PartnersSection = ({ partners }: Props) => {
               <Image
                 src={partner.logoPath}
                 alt={partner.name}
-                width="200px"
-                height="200px"
+                layout="fill"
+                objectFit="contain"
               />
             </Logo>
           ))}
@@ -72,9 +72,13 @@ const LogosContainer = styled.div`
 `;
 
 const Logo = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 200px;
+  width: 100%;
+  max-width: 200px;
 `;
 
 export default PartnersSection;

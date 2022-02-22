@@ -1,5 +1,5 @@
 {
-  "locales": ["fi", "en", "sv"],
+  "locales": ["fi", "en"],
   "defaultLocale": "fi",
   "pages": {
     "*": ["common", "nav"],

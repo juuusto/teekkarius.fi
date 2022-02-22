@@ -5,21 +5,21 @@ import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
 import HamburgerButton from './HamburgerButton';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
+import logo from '../../public/images/T150.svg';
+import Image from 'next/image';
 
 type Props = {
   navColor: string;
+  imageUrl: string;
+  setImage: boolean;
 };
 
-const NavBar = ({ navColor }: Props) => {
+const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const { t } = useTranslation('nav');
 
   burgerOpen ? blockScroll() : allowScroll();
-
-  const handleScroll = () => {
-    console.log('scrolling');
-  };
 
   const [opaque, setOpaque] = useState(false);
 
@@ -39,13 +39,30 @@ const NavBar = ({ navColor }: Props) => {
 
   const toggle = () => setBurgerOpen((v) => !v);
   return (
-    <Nav onScroll={handleScroll} opaque={opaque} navColor={navColor}>
+    <Nav opaque={opaque} navColor={navColor}>
       <Container>
         <Link href="/" passHref>
-          <Logo>Teekkarius&nbsp;150</Logo>
+          <Logo>
+            <Image
+              src={logo}
+              alt="Teekkarius 150 logo"
+              height="50px"
+              width="50px"
+            />
+          </Logo>
         </Link>
-        <NavMenu burgerOpen={burgerOpen} navColor={navColor}>
+        <NavMenu
+          burgerOpen={burgerOpen}
+          navColor={navColor}
+          imageUrl={imageUrl}
+          setImage={setImage}
+        >
           <NavLinks burgerOpen={burgerOpen}>
+            <Link href="/" passHref>
+              <A className="mobileOnly" burgerOpen={burgerOpen}>
+                {t('home')}
+              </A>
+            </Link>
             <Link href="/events" passHref>
               <A burgerOpen={burgerOpen}>{t('events')}</A>
             </Link>
@@ -58,15 +75,25 @@ const NavBar = ({ navColor }: Props) => {
             </Link> */}
           </NavLinks>
           <div>
-            <LanguageButton onClick={async () => await setLanguage('fi')}>
+            <LanguageButton
+              onClick={async () => {
+                await setLanguage('fi');
+                setBurgerOpen(false);
+              }}
+            >
               FI
             </LanguageButton>
-            <LanguageButton onClick={async () => await setLanguage('en')}>
+            <LanguageButton
+              onClick={async () => {
+                await setLanguage('en');
+                setBurgerOpen(false);
+              }}
+            >
               EN
             </LanguageButton>
-            <LanguageButton onClick={async () => await setLanguage('sv')}>
+            {/* <LanguageButton onClick={async () => await setLanguage('sv')}>
               SV
-            </LanguageButton>
+            </LanguageButton> */}
           </div>
         </NavMenu>
         <HamburgerButton active={burgerOpen} toggle={toggle} />
@@ -75,19 +102,26 @@ const NavBar = ({ navColor }: Props) => {
   );
 };
 
-const Nav = styled.nav<{ opaque: boolean; navColor: string }>`
+const Nav = styled.nav<{
+  opaque: boolean;
+  navColor: string;
+}>`
   width: 100%;
   display: flex;
   color: ${({ theme }) => theme.colors.polysteekki};
   position: fixed;
-  z-index: 2;
+  z-index: 20;
   background-color: ${({ theme, opaque, navColor }) =>
     opaque ? theme.colors[navColor] : 'none'};
+
   transition: background-color 0.3s ease;
+
+  font-family: 'KionaBold';
 
   a::selection,
   h2::selection,
-  button::selection {
+  button::selection,
+  img::selection {
     color: ${({ theme }) => theme.colors.tupsu};
     background: ${({ theme }) => theme.colors.polysteekki};
   }
@@ -104,15 +138,21 @@ const Container = styled.div`
 `;
 
 const Logo = styled.a`
-  font-size: 2em;
-  font-weight: 900;
-  text-decoration: none;
-  padding: 0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: 0.5em;
   margin: 0.5em 1em 0.5em 0;
   color: inherit;
 `;
 
-const NavMenu = styled.div<{ burgerOpen: boolean; navColor: string }>`
+const NavMenu = styled.div<{
+  burgerOpen: boolean;
+  navColor: string;
+  imageUrl: string;
+  setImage: boolean;
+}>`
   display: flex;
   align-items: center;
   flex-direction: ${({ burgerOpen }) => (burgerOpen ? 'column' : 'row')};
@@ -130,6 +170,8 @@ const NavMenu = styled.div<{ burgerOpen: boolean; navColor: string }>`
     height: ${({ burgerOpen }) => (burgerOpen ? '100vh' : 'auto')};
     color: ${({ theme }) => theme.colors.polysteekki};
     background-color: ${({ theme, navColor }) => theme.colors[navColor]};
+    background-image: url(${({ imageUrl }) => imageUrl});
+    background-size: cover;
     transform: ${({ burgerOpen }) =>
       burgerOpen ? 'translateX(0)' : 'translateX(100%)'};
     transition: color 2s ease;
@@ -164,6 +206,18 @@ const A = styled.a<{ burgerOpen: boolean }>`
   }
   &:hover::after {
     transform: scaleX(1);
+  }
+
+  &.mobileOnly {
+    display: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 0.25em 1em 1.25em 1em;
+
+    &.mobileOnly {
+      display: initial;
+    }
   }
 `;
 

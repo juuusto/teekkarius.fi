@@ -1,6 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+@font-face {
+  font-family: "ArtifaktElement";
+  src: url("/fonts/ArtifaktElement.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KionaBold";
+  src: url("/fonts/Kiona-Bold.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Evogria";
+  src: url("/fonts/Evogria.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
     /* 
     https://www.joshwcomeau.com/css/custom-css-reset/
   */
@@ -32,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
     5. Improve text rendering
   */
   body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    font-family: 'ArtifaktElement', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -69,12 +90,27 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     overflow-wrap: break-word;
   }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'KionaBold';
+  }
+
+  h1 {
+    font-family: 'Evogria';
+  }
   /*
     9. Create a root stacking context
   */
   #root,
   #__next {
     isolation: isolate;
+  }
+
+  p {
+    
   }
 `;
 

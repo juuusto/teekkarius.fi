@@ -9,11 +9,19 @@ import SocialMediaSection from './SocialMediaSection';
 const partners = [
   {
     name: 'TTER',
-    logoPath: '/partner_logos/tter_logo.svg',
+    logoPath: '/partner_logos/TTER_logo_white.png',
   },
   {
-    name: 'firma 2',
-    logoPath: '/partner_logos/puuttuu.svg',
+    name: 'Espoo',
+    logoPath: '/partner_logos/espoo_logo.png',
+  },
+  {
+    name: 'ABB',
+    logoPath: '/partner_logos/ABB_logo.svg',
+  },
+  {
+    name: 'Ramboll',
+    logoPath: '/partner_logos/ramboll_logo.png',
   },
 ];
 

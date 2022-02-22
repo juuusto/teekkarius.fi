@@ -49,6 +49,7 @@ const Container = styled.div`
   max-width: 1600px;
   width: 100%;
   padding: 6rem;
+  padding-bottom: 0;
   color: ${({ theme }) => theme.colors.betoni};
 
   @media screen and (max-width: 800px) {
