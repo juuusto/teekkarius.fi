@@ -1,14 +1,35 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import Layout from '../../components/layout/Layout';
-import bigCog from '../../public/images/big_cog.svg';
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
+import EventCard from '../../components/events/EventCard';
+import FilterButton from '../../components/events/FilterButton';
+import Image from 'next/image';
+import skumppalasit from '../../public/images/Skumppalasit.svg';
+import lakki from '../../public/images/Lakki.svg';
 
-const EventsPage = () => {
+type Props = {
+  events: T150Event[];
+};
+
+const filterEvents = (events: T150Event[], filter: string) => {
+  switch (filter) {
+    case 't150':
+      return events.filter((event) => event.Teekkarius150);
+    case 'community':
+      return events.filter((event) => !event.Teekkarius150);
+    default:
+      return events;
+  }
+};
+
+const EventsPage = ({ events }: Props) => {
+  const [filter, setFilter] = useState('all');
   const { t } = useTranslation('events');
+
+  const filteredEvents = filterEvents(events, filter);
+
   return (
     <>
       <Head>
@@ -16,107 +37,162 @@ const EventsPage = () => {
         <meta name="description" content="Teekkarius 150" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout navColor="pimiäLight" imageUrl="" setImage={false}>
+      <Layout navColor="portviini" imageUrl="" setImage={false}>
         <EventsSection>
-          <CogContainer>
-            <Link href="/events/main" passHref>
-              <Cog className="left">
-                <Image src={bigCog} alt="cog" layout="fill" priority />
-                <CogText>{t('yearClock')}</CogText>
-              </Cog>
-            </Link>
-            <Link href="/events/community" passHref>
-              <Cog className="right">
-                <Image src={bigCog} alt="cog" layout="fill" priority />
-                <CogText>{t('community')}</CogText>
-              </Cog>
-            </Link>
-          </CogContainer>
+          <Container>
+            <H1>{t('heading')}</H1>
+            <P>
+              {t('add-event')}{' '}
+              <a
+                href="https://forms.office.com/r/uHicfDL90D"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t('add-event-link')}
+              </a>
+              .
+            </P>
+            <FilterButtonContainer>
+              <FilterButton
+                active={filter === 'all'}
+                setFilter={() => setFilter('all')}
+              >
+                {t('all')}
+              </FilterButton>
+              <FilterButton
+                active={filter === 't150'}
+                setFilter={() => setFilter('t150')}
+              >
+                Teekkarius 150
+              </FilterButton>
+              <FilterButton
+                active={filter === 'community'}
+                setFilter={() => setFilter('community')}
+              >
+                {t('community')}
+              </FilterButton>
+            </FilterButtonContainer>
+            {filteredEvents.length === 0 && <p>No events found.</p>}
+            {filteredEvents.map((event, i) => (
+              <EventCard
+                key={event.id + Math.random()}
+                event={event}
+                flipped={i % 2 === 0 ? false : true}
+                i={i}
+                last={i === filteredEvents.length - 1}
+              />
+            ))}
+          </Container>
+          <ImageWrapper>
+            <Image
+              src={lakki}
+              layout="fill"
+              alt=""
+              aria-hidden
+              draggable={false}
+            />
+          </ImageWrapper>
+          <ImageWrapper>
+            <Image
+              src={skumppalasit}
+              layout="fill"
+              alt=""
+              aria-hidden
+              draggable={false}
+            />
+          </ImageWrapper>
         </EventsSection>
       </Layout>
     </>
   );
 };
 
-const rotateCog = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/events?_sort=StartDate`
+  );
+  const events = await res.json();
 
-  to {
-    transform: rotate(360deg);
-  }
-`;
-const rotateCog2 = keyframes`
-  from {
-    transform: rotate(-10deg);
-  }
-
-  to {
-    transform: rotate(350deg);
-  }
-`;
+  // Pass data to the page via props
+  return { props: { events } };
+}
 
 const EventsSection = styled.section`
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  background: ${({ theme }) => theme.colors.pimiäLight};
+  padding-top: 6rem;
+  background: rgb(61, 0, 36);
+  background: linear-gradient(
+    156deg,
+    rgba(61, 0, 36, 1) 0%,
+    rgba(145, 23, 31, 1) 100%
+  );
   overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-`;
-
-const CogContainer = styled.div`
-  width: 100%;
-  margin-left: 15vh;
-  margin-right: 15vh;
-  margin-top: 20vh;
-  aspect-ratio: 3 / 2;
-  max-width: 1000px;
+  color: ${({ theme }) => theme.colors.betoni};
   position: relative;
-  @media screen and (max-width: 1000px) {
-    aspect-ratio: auto;
-    height: 60vh;
-    margin-left: 8vh;
-    margin-right: 8vh;
-  }
+  overflow: hidden;
 `;
 
-const Cog = styled.a`
+const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: max(65%, 320px);
-  aspect-ratio: 1 / 1;
+  max-width: 1024px;
+  width: 100%;
+  padding: 0 1.5em;
+  min-height: 100vh;
+  z-index: 1;
+`;
 
-  color: #fff;
+const H1 = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-family: 'KionaBold';
+`;
+
+const P = styled.p`
   text-align: center;
-  cursor: pointer;
-  text-decoration: none;
+  margin-bottom: 1rem;
 
-  &.left {
-    top: -10%;
-    left: -20%;
-  }
-  &.left > * > img {
-    animation: ${rotateCog2} 20s infinite linear;
-  }
-
-  &.right {
-    right: -20%;
-    bottom: -20%;
-  }
-  &.right > * > img {
-    animation: ${rotateCog} 20s infinite linear reverse;
+  & > a {
+    color: inherit;
   }
 `;
 
-const CogText = styled.p`
-  z-index: 1;
-  text-transform: uppercase;
-  font-size: calc(min(5vw, 2.5rem));
+const FilterButtonContainer = styled.div`
+  /* margin-bottom: 2rem; */
+`;
+
+const ImageWrapper = styled.div`
+  position: absolute;
+  width: 60vw;
+  height: 1000px;
+  top: 200px;
+  left: -20%;
+  opacity: 0.1;
+  transform: rotate(-20deg);
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+  z-index: 0;
+
+  &:nth-of-type(3) {
+    top: 300px;
+    left: auto;
+    right: -20%;
+    transform: rotate(20deg);
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export default EventsPage;

@@ -8,6 +8,7 @@ const theme = {
     pimiä: '#2A0C4E',
     pimiäLight: '#063967',
     tupsu: '#07090F',
+    kulta: '#FA9500',
   },
 };
 
