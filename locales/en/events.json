@@ -1,5 +1,10 @@
 {
   "yearClock": "Teekkarius 150 events",
-  "community": "Community events",
-  "title": "Teekkarius 150 - Events"
+  "title": "Teekkarius 150 - Events",
+  "eventPage": "Event page",
+  "heading": "Events",
+  "community": "Associations",
+  "all": "All",
+  "add-event": "If your association is organizing an event that you would like to be included on this page, read the instructions and fill up the form",
+  "add-event-link": "here"
 }

@@ -1,5 +1,10 @@
 {
   "yearClock": "Teekkarius 150 vuosikello",
-  "community": "Yhteisötapahtumat",
-  "title": "Teekkarius 150 - Events"
+  "title": "Teekkarius 150 - Events",
+  "eventPage": "Tapahtumasivulle",
+  "heading": "Tapahtumat",
+  "community": "Yhdistykset",
+  "all": "Kaikki",
+  "add-event": "Jos haluat oman yhdistyksesi tapahtuman osaksi tätä sivua, lue ohjeet ja täytä lomake",
+  "add-event-link": "tästä"
 }
