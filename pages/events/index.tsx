@@ -107,7 +107,7 @@ const EventsPage = ({ events }: Props) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Fetch data from external API
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/events?_sort=StartDate`
@@ -115,7 +115,7 @@ export async function getServerSideProps() {
   const events = await res.json();
 
   // Pass data to the page via props
-  return { props: { events } };
+  return { props: { events }, revalidate: 300 };
 }
 
 const EventsSection = styled.section`
@@ -165,7 +165,7 @@ const P = styled.p`
 `;
 
 const FilterButtonContainer = styled.div`
-  /* margin-bottom: 2rem; */
+  margin-bottom: 1rem;
 `;
 
 const ImageWrapper = styled.div`

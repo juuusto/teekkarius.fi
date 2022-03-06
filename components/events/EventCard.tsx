@@ -34,7 +34,7 @@ const EventCard = ({ event, flipped, i, last }: Props) => {
       $flipped={flipped}
       as={motion.div}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.3 + i * 0.6 } }}
+      animate={{ opacity: 1, transition: { delay: 0.3 + i * 0.3 } }}
     >
       <Date $flipped={flipped}>{date}</Date>
       {event.Teekkarius150 && (
@@ -59,8 +59,8 @@ const EventCard = ({ event, flipped, i, last }: Props) => {
           initial={{ height: 0 }}
           animate={{ height: 'calc(100% + 40px)' }}
           transition={{
-            delay: 0.5 + i * 0.6,
-            default: { duration: 0.5, ease: 'linear' },
+            delay: 0.5 + i * 0.3,
+            default: { duration: 0.25, ease: 'linear' },
           }}
         />
       )}
