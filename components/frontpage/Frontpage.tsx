@@ -1,6 +1,7 @@
 import React from 'react';
 import BlocksSection from './BlocksSection';
 import HeroSection from './HeroSection';
+import InstagramSection from './InstagramSection';
 import PartnersSection from './PartnersSection';
 import SocialMediaSection from './SocialMediaSection';
 
@@ -31,6 +32,7 @@ const Frontpage = () => {
       <HeroSection />
       <BlocksSection />
       <SocialMediaSection />
+      <InstagramSection />
       <PartnersSection partners={partners} />
     </>
   );
