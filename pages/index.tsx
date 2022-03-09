@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Layout from '../components/layout/Layout';
 import Frontpage from '../components/frontpage/Frontpage';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ feed }: any) => {
   const { t } = useTranslation('home');
   return (
     <>
@@ -36,10 +36,22 @@ const Home: NextPage = () => {
         imageUrl="/images/kotitausta.jpg"
         setImage={true}
       >
-        <Frontpage />
+        <Frontpage feed={feed} />
       </Layout>
     </>
   );
 };
+
+export async function getStaticProps() {
+  // Fetch data from external API
+
+  const res = await fetch(
+    `https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${process.env.IG_KEY}&limit=9`
+  );
+  const feed = await res.json();
+
+  // Pass data to the page via props
+  return { props: { feed }, revalidate: 300 };
+}
 
 export default Home;

@@ -1,26 +1,22 @@
-import React, { useEffect } from 'react';
-// @ts-ignore
-import Instafeed from 'instafeed.js';
+import Image from 'next/image';
+import React from 'react';
 import styled from 'styled-components';
 
-const feed = new Instafeed({
-  accessToken: process.env.NEXT_PUBLIC_IG_KEY,
-  template:
-    '<a href="{{link}}" target="_blank" rel="noreferrer"><img title="{{caption}}" src="{{image}}" /></a>',
-  limit: 9,
-});
+type Props = {
+  feed: any;
+};
 
-const InstagramSection = () => {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      feed.run();
-    }
-  }, []);
-
+const InstagramSection = ({ feed }: Props) => {
   return (
     <Section>
       <H2>Instagram</H2>
-      <Container id="instafeed"></Container>
+      <Container>
+        {feed.data.map((data: any) => (
+          <ImageWrapper key={data.id}>
+            <Image src={data.media_url} alt="Instagram feed" layout="fill" />
+          </ImageWrapper>
+        ))}
+      </Container>
     </Section>
   );
 };
@@ -47,6 +43,7 @@ const H2 = styled.h2`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
   max-width: 1600px;
   gap: 1.5rem;
   padding: 6rem;
@@ -56,6 +53,12 @@ const Container = styled.div`
     grid-template-columns: 1fr;
     padding: 1.5rem;
   }
+`;
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
 `;
 
 export default InstagramSection;

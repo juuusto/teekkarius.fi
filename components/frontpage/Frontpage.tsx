@@ -26,13 +26,14 @@ const partners = [
   },
 ];
 
-const Frontpage = () => {
+const Frontpage = ({ feed }: any) => {
   return (
     <>
       <HeroSection />
       <BlocksSection />
       <SocialMediaSection />
-      <InstagramSection />
+      {/* @ts-ignore */}
+      <InstagramSection feed={feed} />
       <PartnersSection partners={partners} />
     </>
   );
