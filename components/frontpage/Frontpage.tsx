@@ -1,6 +1,7 @@
 import React from 'react';
 import BlocksSection from './BlocksSection';
 import HeroSection from './HeroSection';
+import InstagramSection from './InstagramSection';
 import PartnersSection from './PartnersSection';
 import SocialMediaSection from './SocialMediaSection';
 
@@ -25,12 +26,14 @@ const partners = [
   },
 ];
 
-const Frontpage = () => {
+const Frontpage = ({ feed }: any) => {
   return (
     <>
       <HeroSection />
       <BlocksSection />
       <SocialMediaSection />
+      {/* @ts-ignore */}
+      <InstagramSection feed={feed} />
       <PartnersSection partners={partners} />
     </>
   );
