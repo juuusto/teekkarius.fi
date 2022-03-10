@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  feed: any;
+  feed: InstagramPost[];
 };
 
 const InstagramSection = ({ feed }: Props) => {
@@ -11,10 +11,19 @@ const InstagramSection = ({ feed }: Props) => {
     <Section>
       <H2>Instagram</H2>
       <Container>
-        {feed.data.map((data: any) => (
-          <ImageWrapper key={data.id}>
-            <Image src={data.media_url} alt="Instagram feed" layout="fill" />
-          </ImageWrapper>
+        {feed.map((item: InstagramPost) => (
+          <ImageLink
+            key={item.id}
+            href={item.permalink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image
+              src={item.media_url.replace(/^[^.]*/, 'https://scontent-hel3-1')}
+              alt="Instagram feed"
+              layout="fill"
+            />
+          </ImageLink>
         ))}
       </Container>
     </Section>
@@ -55,10 +64,11 @@ const Container = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageLink = styled.a`
   width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
+  cursor: pointer;
 `;
 
 export default InstagramSection;

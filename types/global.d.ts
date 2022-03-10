@@ -14,3 +14,13 @@ declare type T150Event = {
   EndDate: string;
   Organizer: string;
 };
+
+declare type InstagramPost = {
+  caption: string;
+  id: string;
+  media_type: string;
+  media_url: string;
+  permalink: string;
+  timestamp: string;
+  username: string;
+};

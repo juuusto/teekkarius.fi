@@ -26,7 +26,11 @@ const partners = [
   },
 ];
 
-const Frontpage = ({ feed }: any) => {
+type Props = {
+  feed: InstagramPost[];
+};
+
+const Frontpage = ({ feed }: Props) => {
   return (
     <>
       <HeroSection />
