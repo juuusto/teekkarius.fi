@@ -3,8 +3,13 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import Layout from '../components/layout/Layout';
 import Frontpage from '../components/frontpage/Frontpage';
+import { ReactNode } from 'react';
 
-const Home: NextPage = ({ feed }: any) => {
+type Props = {
+  feed: InstagramPost[];
+};
+
+const Home: NextPage<Props> = ({ feed }) => {
   const { t } = useTranslation('home');
   return (
     <>
@@ -48,7 +53,8 @@ export async function getStaticProps() {
   const res = await fetch(
     `https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${process.env.IG_KEY}&limit=9`
   );
-  const feed = await res.json();
+  const data = await res.json();
+  const feed = data.data;
 
   // Pass data to the page via props
   return { props: { feed }, revalidate: 300 };
