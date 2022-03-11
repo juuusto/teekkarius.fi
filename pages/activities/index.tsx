@@ -5,6 +5,8 @@ import useTranslation from 'next-translate/useTranslation';
 import styled from 'styled-components';
 import Activity from '../../components/activities/Activity';
 import PointCardCanvas from '../../components/activities/PointCardCanvas';
+import miettijä from '../../public/images/miettijä.jpg';
+import Image from 'next/image';
 
 const ActivitiesPage = () => {
   const { t } = useTranslation('activities');
@@ -26,7 +28,12 @@ const ActivitiesPage = () => {
               <PointCardCanvas />
             </Activity>
             <Activity title="magazine-title" body="magazine-body">
-              jämerän taival -kuva
+              <Image
+                src={miettijä}
+                alt="History magazine"
+                layout="fill"
+                priority
+              />
             </Activity>
           </Container>
         </Section>
@@ -34,24 +41,6 @@ const ActivitiesPage = () => {
     </>
   );
 };
-
-// const Hero = styled.section`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: ${({ theme }) => theme.colors.betoni};
-//   width: 100%;
-//   height: 40vh;
-//   padding-top: 2rem;
-//   padding-bottom: 2rem;
-//   background: ${({ theme }) => theme.colors.portviini};
-//   background-image: url('/images/LL21.jpg');
-//   background-size: cover;
-//   filter: sepia(100%) saturate(200%) brightness(50%) hue-rotate(280deg);
-
-//   & > * {
-//   }
-// `;
 
 const Section = styled.section`
   min-height: 100vh;
@@ -76,7 +65,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1024px;
+  max-width: 1400px;
   width: 100%;
   padding: 0 1.5em;
   min-height: 100vh;

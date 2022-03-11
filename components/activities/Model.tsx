@@ -8,7 +8,6 @@ import { useGLTF } from '@react-three/drei';
 export default function Model(props: any) {
   const group = useRef();
   const { nodes, materials } = useGLTF('/3d/pistekortti4.gltf');
-  console.log(nodes, materials);
 
   return (
     <group ref={group} {...props} dispose={null}>

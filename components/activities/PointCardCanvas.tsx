@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+// @ts-ignore
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 
@@ -16,7 +17,7 @@ const PointCardCanvas = () => {
             enablePan={false}
             enableZoom={false}
             autoRotate
-            autoRotateSpeed={2}
+            autoRotateSpeed={1}
           />
           <Environment preset="sunset" />
         </Suspense>

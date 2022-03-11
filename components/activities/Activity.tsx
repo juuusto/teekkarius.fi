@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
 type PropTypes = {
@@ -12,7 +12,7 @@ const Activity = ({ children, title, body }: PropTypes) => {
   const { t } = useTranslation('activities');
   return (
     <Container>
-      <div>{children}</div>
+      <Div>{children}</Div>
       <div>
         <H2>{t(title)}</H2>
         {t(body)
@@ -30,11 +30,18 @@ const Container = styled.div`
   justify-content: center;
   grid-template-columns: 1fr;
   margin-bottom: 4rem;
-  gap: 1rem;
+  gap: 2rem;
 
   @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 5fr;
   }
+`;
+
+const Div = styled.div`
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 `;
 
 const H2 = styled.h2`
