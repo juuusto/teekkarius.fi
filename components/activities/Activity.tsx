@@ -27,6 +27,7 @@ const Activity = ({ children, title, body }: PropTypes) => {
 
 const Container = styled.div`
   display: grid;
+  justify-content: center;
   grid-template-columns: 1fr;
   margin-bottom: 4rem;
   gap: 1rem;
@@ -39,8 +40,10 @@ const Container = styled.div`
 const H2 = styled.h2`
   font-size: 1.75rem;
   margin-bottom: 1rem;
+  text-align: center;
 
   @media screen and (min-width: 800px) {
+    text-align: left;
     font-size: 2rem;
   }
 `;

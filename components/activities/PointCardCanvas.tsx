@@ -10,8 +10,14 @@ const PointCardCanvas = () => {
     <Container>
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 2], fov: 45 }}>
         <Suspense fallback={null}>
+          <planeGeometry args={[10, 10]} />
           <Model />
-          <OrbitControls enablePan={false} enableZoom={false} />
+          <OrbitControls
+            enablePan={false}
+            enableZoom={false}
+            autoRotate
+            autoRotateSpeed={2}
+          />
           <Environment preset="sunset" />
         </Suspense>
       </Canvas>
@@ -24,7 +30,7 @@ const Container = styled.div`
   aspect-ratio: 1 / 1;
 
   @media screen and (max-width: 800px) {
-    margin-bottom: -4rem;
+    margin-bottom: -1rem;
   }
 `;
 
