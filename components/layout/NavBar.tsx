@@ -34,8 +34,11 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
     // clean up code
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      allowScroll();
+    };
+  }, [allowScroll]);
 
   const toggle = () => setBurgerOpen((v) => !v);
   return (
