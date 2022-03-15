@@ -36,11 +36,7 @@ const Home: NextPage<Props> = ({ feed }) => {
           crossOrigin=""
         />
       </Head>
-      <Layout
-        navColor="pimiä"
-        imageUrl="/images/kotitausta.jpg"
-        setImage={true}
-      >
+      <Layout navColor="portviini" imageUrl="/images/hero.jpg" setImage={true}>
         <Frontpage feed={feed} />
       </Layout>
     </>

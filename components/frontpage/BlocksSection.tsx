@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
-import T150_square_big from '../../public/images/Teekkarius150_nelio.jpg';
+import T150_square_big from '../../public/images/block_main.jpg';
 import T150_block_1 from '../../public/images/Vihreä.jpg';
-import T150_block_2 from '../../public/images/Vaaleasininen.jpg';
+import T150_block_2 from '../../public/images/Vaaleanvihreä.jpg';
+import useTranslation from 'next-translate/useTranslation';
 
 const BlocksSection = () => {
+  const { t } = useTranslation('home');
   return (
     <StyledBlocksSection>
       <Container>
@@ -14,19 +16,19 @@ const BlocksSection = () => {
           <BlockText>Teekkarius 150</BlockText>
         </BlockBig>
         <BlocksContainer>
-          <BlockItem>
-            <BlockText>Lorem, ipsum.</BlockText>
+          <BlockItem href="/events">
+            <BlockText>{t('nav:events')}</BlockText>
           </BlockItem>
-          <BlockItem>
+          <BlockItem href="/activities">
             <Image src={T150_block_1} alt="Teekkarius 150" />
-            <BlockText>Lorem, ipsum.</BlockText>
+            <BlockText>{t('nav:activities')}</BlockText>
           </BlockItem>
-          <BlockItem>
+          <BlockItem href="/activities">
             <Image src={T150_block_2} alt="Teekkarius 150" />
-            <BlockText>Lorem, ipsum.</BlockText>
+            <BlockText>{t('point_card')}</BlockText>
           </BlockItem>
-          <BlockItem>
-            <BlockText>Lorem, ipsum.</BlockText>
+          <BlockItem href="/contact">
+            <BlockText>{t('nav:contact')}</BlockText>
           </BlockItem>
         </BlocksContainer>
       </Container>
@@ -65,6 +67,7 @@ const BlockBig = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 4rem;
 
   pointer-events: none;
 
@@ -76,7 +79,8 @@ const BlockBig = styled.div`
 const BlockText = styled.p`
   position: absolute;
   text-transform: uppercase;
-  font-size: 2.5em;
+  /* font-size: 2.5em; */
+  max-width: 100%;
 `;
 
 const BlocksContainer = styled.div`
@@ -94,7 +98,7 @@ const BlockItem = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.5em;
+  font-size: 1em;
 
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -104,16 +108,22 @@ const BlockItem = styled.a`
 
   transition: opacity 0.15s ease;
 
-  &:first-child {
-    background: ${({ theme }) => theme.colors.pimiä};
-  }
+  color: black;
+  font-weight: bold;
+
+  &:first-child,
   &:last-child {
     background: ${({ theme }) => theme.colors.portviini};
+    color: ${({ theme }) => theme.colors.betoni};
   }
 
   &:hover {
     opacity: 0.8;
     z-index: 3;
+  }
+
+  @media screen and (min-width: 800px) {
+    font-size: 1.5rem;
   }
 `;
 

@@ -11,18 +11,27 @@ const partners = [
   {
     name: 'TTER',
     logoPath: '/partner_logos/TTER_logo_white.png',
+    main: true,
   },
   {
     name: 'Espoo',
     logoPath: '/partner_logos/espoo_logo.png',
+    main: true,
+  },
+  {
+    name: 'TEK',
+    logoPath: '/partner_logos/TEK_logo.png',
+    main: false,
   },
   {
     name: 'ABB',
     logoPath: '/partner_logos/ABB_logo.svg',
+    main: false,
   },
   {
-    name: 'Ramboll',
-    logoPath: '/partner_logos/ramboll_logo.png',
+    name: 'Sievo',
+    logoPath: '/partner_logos/sievo_logo.png',
+    main: false,
   },
 ];
 
@@ -36,7 +45,6 @@ const Frontpage = ({ feed }: Props) => {
       <HeroSection />
       <BlocksSection />
       <SocialMediaSection />
-      {/* @ts-ignore */}
       <InstagramSection feed={feed} />
       <PartnersSection partners={partners} />
     </>
