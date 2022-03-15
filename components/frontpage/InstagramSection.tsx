@@ -22,6 +22,7 @@ const InstagramSection = ({ feed }: Props) => {
               src={item.media_url.replace(/^[^.]*/, 'https://scontent-hel3-1')}
               alt="Instagram feed"
               layout="fill"
+              priority
             />
           </ImageLink>
         ))}

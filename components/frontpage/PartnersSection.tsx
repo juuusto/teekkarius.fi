@@ -6,6 +6,7 @@ import Image from 'next/image';
 type Partner = {
   name: string;
   logoPath: string;
+  main: boolean;
 };
 
 type Props = {
@@ -17,18 +18,35 @@ const PartnersSection = ({ partners }: Props) => {
   return (
     <Section>
       <Container>
+        <H2>{t('main_partners')}</H2>
+        <MainLogosContainer>
+          {partners
+            .filter((p) => p.main)
+            .map((partner) => (
+              <MainLogo key={partner.name}>
+                <Image
+                  src={partner.logoPath}
+                  alt={partner.name}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </MainLogo>
+            ))}
+        </MainLogosContainer>
         <H2>{t('partners')}</H2>
         <LogosContainer>
-          {partners.map((partner) => (
-            <Logo key={partner.name}>
-              <Image
-                src={partner.logoPath}
-                alt={partner.name}
-                layout="fill"
-                objectFit="contain"
-              />
-            </Logo>
-          ))}
+          {partners
+            .filter((p) => !p.main)
+            .map((partner) => (
+              <Logo key={partner.name}>
+                <Image
+                  src={partner.logoPath}
+                  alt={partner.name}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </Logo>
+            ))}
         </LogosContainer>
       </Container>
     </Section>
@@ -60,6 +78,17 @@ const H2 = styled.h2`
   margin: 3rem 0;
 `;
 
+const MainLogosContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 2rem;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const LogosContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -71,6 +100,15 @@ const LogosContainer = styled.div`
   }
 `;
 
+const MainLogo = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+  max-width: 300px;
+`;
 const Logo = styled.div`
   position: relative;
   display: flex;
