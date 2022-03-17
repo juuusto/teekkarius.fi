@@ -6,6 +6,7 @@
     "/": ["home"],
     "/events": ["events"],
     "/activities": ["activities"],
-    "/corporate-relations": ["corporate"]
+    "/corporate-relations": ["corporate"],
+    "/contact": ["contact"]
   }
 }
