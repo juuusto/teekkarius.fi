@@ -3,8 +3,9 @@ import React from 'react';
 import Layout from '../../components/layout/Layout';
 import useTranslation from 'next-translate/useTranslation';
 import styled from 'styled-components';
+import ContactCard from '../../components/contact/ContactCard';
 
-const persons = [
+const persons: Person[] = [
   { name: 'Linda Loukamo', fi: 'Puheenjohtaja', en: 'Chair' },
   { name: 'Heidi Välisalmi', fi: 'Varapuheenjohtaja', en: 'Vice chair' },
   { name: 'Samu Nurmi', fi: 'Tuottaja', en: 'Producer' },
@@ -52,7 +53,7 @@ const persons = [
 ];
 
 const ContactPage = () => {
-  const { t } = useTranslation('contact');
+  const { t, lang } = useTranslation('contact');
   return (
     <>
       <Head>
@@ -67,7 +68,15 @@ const ContactPage = () => {
             <P>
               {t('body')} <i>{t('contact-email')}</i>.
             </P>
-            <ContactContainer></ContactContainer>
+            <ContactContainer>
+              {persons.map((person) => (
+                <ContactCard
+                  key={person.name}
+                  name={person.name}
+                  occupation={lang === 'fi' ? person.fi : person.en}
+                />
+              ))}
+            </ContactContainer>
           </Container>
         </Section>
       </Layout>
@@ -113,7 +122,6 @@ const H1 = styled.h1`
 `;
 
 const P = styled.p`
-  /* text-align: center; */
   margin-bottom: 1rem;
   max-width: 800px;
   & > a {
@@ -124,6 +132,16 @@ const P = styled.p`
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+
+  margin-bottom: 8rem;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export default ContactPage;

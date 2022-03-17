@@ -24,3 +24,10 @@ declare type InstagramPost = {
   timestamp: string;
   username: string;
 };
+
+declare type Person = {
+  name: string;
+  fi: string;
+  en: string;
+  email?: string;
+};
