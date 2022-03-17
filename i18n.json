@@ -5,6 +5,7 @@
     "*": ["common", "nav"],
     "/": ["home"],
     "/events": ["events"],
-    "/activities": ["activities"]
+    "/activities": ["activities"],
+    "/corporate-relations": ["corporate"]
   }
 }

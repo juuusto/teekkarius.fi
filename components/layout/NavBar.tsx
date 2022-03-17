@@ -72,10 +72,9 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
             <Link href="/activities" passHref>
               <A burgerOpen={burgerOpen}>{t('activities')}</A>
             </Link>
-            {/* Tää on piilossa sen aikaa kunnes on sivut tehty niille */}
-            {/* <Link href="/" passHref>
-              <A burgerOpen={burgerOpen}>{t('companies')}</A>
-            </Link> */}
+            <Link href="/corporate-relations" passHref>
+              <A burgerOpen={burgerOpen}>{t('corporate')}</A>
+            </Link>
           </NavLinks>
           <div>
             <LanguageButton
