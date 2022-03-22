@@ -7,6 +7,7 @@ import HamburgerButton from './HamburgerButton';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import logo from '../../public/images/T150.svg';
 import Image from 'next/image';
+import { useCurrentPage } from '../../providers/currentPage';
 
 type Props = {
   navColor: string;
@@ -18,6 +19,8 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const { t } = useTranslation('nav');
+
+  const { currentPage, setPage } = useCurrentPage();
 
   burgerOpen ? blockScroll() : allowScroll();
 
@@ -67,13 +70,48 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
               </A>
             </Link>
             <Link href="/events" passHref>
-              <A burgerOpen={burgerOpen}>{t('events')}</A>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'events' ? 'active' : ''}
+                onClick={() => {
+                  setPage('events');
+                }}
+              >
+                {t('events')}
+              </A>
             </Link>
             <Link href="/activities" passHref>
-              <A burgerOpen={burgerOpen}>{t('activities')}</A>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'activities' ? 'active' : ''}
+                onClick={() => {
+                  setPage('activities');
+                }}
+              >
+                {t('activities')}
+              </A>
             </Link>
             <Link href="/corporate-relations" passHref>
-              <A burgerOpen={burgerOpen}>{t('corporate')}</A>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'corporate' ? 'active' : ''}
+                onClick={() => {
+                  setPage('corporate');
+                }}
+              >
+                {t('corporate')}
+              </A>
+            </Link>
+            <Link href="/contact" passHref>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'contact' ? 'active' : ''}
+                onClick={() => {
+                  setPage('contact');
+                }}
+              >
+                {t('contact')}
+              </A>
             </Link>
           </NavLinks>
           <div>
@@ -210,6 +248,10 @@ const A = styled.a<{ burgerOpen: boolean }>`
     transform: scaleX(1);
   }
 
+  &.active::after {
+    transform: scaleX(1);
+  }
+
   &.mobileOnly {
     display: none;
   }
@@ -219,6 +261,16 @@ const A = styled.a<{ burgerOpen: boolean }>`
 
     &.mobileOnly {
       display: initial;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    padding: 0.75em 0.5em 1.25em 0.5em;
+    font-size: 1rem;
+
+    &::after {
+      width: calc(100% - 1em);
+      left: 0.5em;
     }
   }
 `;
