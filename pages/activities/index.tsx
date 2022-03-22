@@ -18,12 +18,8 @@ const ActivitiesPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout navColor="portviini" imageUrl="" setImage={false}>
-        {/* <Hero>
-          <H1>{t('heading')}</H1>
-        </Hero> */}
         <Section>
           <Container>
-            <H1>{t('heading')}</H1>
             <Activity title="point-card-title" body="point-card-body">
               <PointCardCanvas />
             </Activity>
