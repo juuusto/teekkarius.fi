@@ -5,6 +5,7 @@
     "*": ["common", "nav"],
     "/": ["home"],
     "/events": ["events"],
+    "/events/tekniikan-taikaa": ["events"],
     "/activities": ["activities"],
     "/corporate-relations": ["corporate"],
     "/contact": ["contact"]
