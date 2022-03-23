@@ -83,7 +83,7 @@ const Card = styled.div<{ $flipped: boolean }>`
 
     margin-left: 0;
     margin-right: 0;
-    align-self: ${({ $flipped }) => ($flipped ? 'start' : 'end')};
+    align-self: ${({ $flipped }) => ($flipped ? 'flex-start' : 'flex-end')};
   }
 `;
 
