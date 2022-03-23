@@ -12,8 +12,8 @@ const ContactCard = ({ imageUrl, name, occupation }: Props) => {
   const emailJoined = name.split(' ')[0] + '.' + name.split(' ')[1] + '@ayy.fi';
   const emailString = emailJoined
     .toLowerCase()
-    .replaceAll('ä', 'a')
-    .replaceAll('ö', 'o');
+    .replace(/ä/g, 'a')
+    .replace(/ö/g, 'o');
 
   return (
     <Card>
