@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import banner from '../../public/images/tekniikantaikaa.jpg';
 import texture from '../../public/images/paperitekstuuri.jpg';
+import map from '../../public/images/tekniikan_taikaa_kartta.png';
 
 const MagicOfTechnologyPage = () => {
   const { t } = useTranslation('events');
@@ -55,6 +56,14 @@ const MagicOfTechnologyPage = () => {
                 <LargeText>{t('MoT-tuesday')}</LargeText>
                 <LargeText>{t('MoT-wednesday')}</LargeText>
                 <LargeText>{t('MoT-entry')}</LargeText>
+                <MapImageWrapper>
+                  <Image
+                    src={map}
+                    layout="fill"
+                    alt="Magic of Technology map"
+                    priority
+                  />
+                </MapImageWrapper>
               </InfoTextContainer>
             </InfoContainer>
           </Container>
@@ -113,6 +122,9 @@ const InfoContainer = styled.section`
     grid-template-columns: 1fr;
     padding: 2rem 1rem;
   }
+  @media screen and (max-width: 1200px) {
+    padding: 2rem 4rem;
+  }
 `;
 
 const H1 = styled.h1`
@@ -147,6 +159,7 @@ const LargeText = styled.p`
 
   &:last-of-type {
     margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -154,6 +167,11 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+`;
+const MapImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 `;
 const BackgroundImageWrapper = styled.div`
   position: absolute;
