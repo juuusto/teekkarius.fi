@@ -23,9 +23,9 @@ const BlocksSection = () => {
             <Image src={T150_block_1} alt="Teekkarius 150" />
             <BlockText>{t('nav:activities')}</BlockText>
           </BlockItem>
-          <BlockItem href="/activities">
+          <BlockItem href="/events/tekniikan-taikaa">
             <Image src={T150_block_2} alt="Teekkarius 150" />
-            <BlockText>{t('point_card')}</BlockText>
+            <BlockText>{t('MoT')}</BlockText>
           </BlockItem>
           <BlockItem href="/contact">
             <BlockText>{t('nav:contact')}</BlockText>
@@ -42,6 +42,9 @@ const StyledBlocksSection = styled.section`
   flex-direction: column;
   align-items: center;
   background: ${({ theme }) => theme.colors.betoni};
+
+  font-family: 'KionaBold';
+  text-align: center;
 `;
 
 const Container = styled.div`
@@ -67,7 +70,7 @@ const BlockBig = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: 4vw;
 
   pointer-events: none;
 
@@ -79,7 +82,6 @@ const BlockBig = styled.div`
 const BlockText = styled.p`
   position: absolute;
   text-transform: uppercase;
-  /* font-size: 2.5em; */
   max-width: 100%;
 `;
 
@@ -93,12 +95,14 @@ const BlocksContainer = styled.div`
 `;
 
 const BlockItem = styled.a`
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1em;
+  font-size: 2.25vw;
+  line-height: 1.5;
 
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -122,8 +126,8 @@ const BlockItem = styled.a`
     z-index: 3;
   }
 
-  @media screen and (min-width: 800px) {
-    font-size: 1.5rem;
+  @media screen and (max-width: 800px) {
+    font-size: 5vw;
   }
 `;
 

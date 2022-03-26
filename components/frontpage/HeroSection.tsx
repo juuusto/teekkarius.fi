@@ -30,7 +30,7 @@ const Hero = styled.section`
   height: 100vh;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background: ${({ theme }) => theme.colors.pimiä};
+  background: ${({ theme }) => theme.colors.portviini};
   background-image: url('/images/hero.jpg');
   background-size: cover;
 
