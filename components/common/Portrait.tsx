@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import placeholder from '../../public/images/T150.svg';
@@ -10,7 +9,7 @@ type Props = {
 const Portrait = ({ image }: Props) => {
   return (
     <Wrapper>
-      <Image src={image ? image : placeholder} alt="Portrait" layout="fill" />
+      <img src={image ? image : placeholder.src} alt="Portrait" height="auto" />
     </Wrapper>
   );
 };
@@ -23,6 +22,8 @@ const Wrapper = styled.div`
   background-color: #333;
   border: 2px solid #eee;
   margin: 2rem auto;
+  display: grid;
+  align-items: center;
   overflow: hidden;
 `;
 

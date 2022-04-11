@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/image';
 
 type Partner = {
   name: string;
@@ -24,12 +23,7 @@ const PartnersSection = ({ partners }: Props) => {
             .filter((p) => p.main)
             .map((partner) => (
               <MainLogo key={partner.name}>
-                <Image
-                  src={partner.logoPath}
-                  alt={partner.name}
-                  layout="fill"
-                  objectFit="contain"
-                />
+                <img src={partner.logoPath} alt={partner.name} />
               </MainLogo>
             ))}
         </MainLogosContainer>
@@ -39,12 +33,7 @@ const PartnersSection = ({ partners }: Props) => {
             .filter((p) => !p.main)
             .map((partner) => (
               <Logo key={partner.name}>
-                <Image
-                  src={partner.logoPath}
-                  alt={partner.name}
-                  layout="fill"
-                  objectFit="contain"
-                />
+                <img src={partner.logoPath} alt={partner.name} />
               </Logo>
             ))}
         </LogosContainer>

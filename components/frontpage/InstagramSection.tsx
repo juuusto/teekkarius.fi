@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -18,11 +17,9 @@ const InstagramSection = ({ feed }: Props) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image
+            <img
               src={item.media_url.replace(/^[^.]*/, 'https://scontent-hel3-1')}
               alt="Instagram feed"
-              layout="fill"
-              priority
             />
           </ImageLink>
         ))}
