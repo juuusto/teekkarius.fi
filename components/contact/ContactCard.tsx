@@ -3,17 +3,20 @@ import styled from 'styled-components';
 import Portrait from '../common/Portrait';
 
 type Props = {
-  imageUrl?: string;
   name: string;
   occupation: string;
 };
 
-const ContactCard = ({ imageUrl, name, occupation }: Props) => {
+const ContactCard = ({ name, occupation }: Props) => {
   const emailJoined = name.split(' ')[0] + '.' + name.split(' ')[1] + '@ayy.fi';
   const emailString = emailJoined
     .toLowerCase()
     .replace(/ä/g, 'a')
     .replace(/ö/g, 'o');
+
+  const imageUrl = `/images/jaosto/${name.split(' ')[1].toLowerCase()}_${name
+    .split(' ')[0]
+    .toLowerCase()}.jpg`;
 
   return (
     <Card>

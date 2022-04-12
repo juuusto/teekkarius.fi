@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import placeholder from '../../public/images/T150.svg';
 
 type Props = {
-  image?: string;
+  image: string;
 };
 
 const Portrait = ({ image }: Props) => {
+  const [imageError, setImageError] = useState(false);
   return (
     <Wrapper>
-      <img src={image ? image : placeholder.src} alt="Portrait" height="auto" />
+      <Img
+        src={imageError ? placeholder.src : image}
+        onError={() => setImageError(true)}
+        alt="Portrait"
+        imageError={imageError}
+      />
     </Wrapper>
   );
 };
@@ -25,6 +31,11 @@ const Wrapper = styled.div`
   display: grid;
   align-items: center;
   overflow: hidden;
+`;
+
+const Img = styled.img<{ imageError: boolean }>`
+  height: ${(p) => (p.imageError ? 'auto' : '100%')};
+  object-fit: cover;
 `;
 
 export default Portrait;
