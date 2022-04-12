@@ -40,7 +40,7 @@ const EventCard = ({ event, flipped, i, last }: Props) => {
       {event.Teekkarius150 && (
         <T150Wrapper>
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            <Image src={t150} layout="fill" alt="T150 logo" draggable={false} />
+            <img src={t150.src} alt="T150 logo" draggable={false} />
           </div>
         </T150Wrapper>
       )}
