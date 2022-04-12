@@ -26,7 +26,7 @@ const CorporateRelationsPage = () => {
             <H2>{t('contact-heading')}</H2>
             <ContactContainer>
               <P>{t('contact-body')}</P>
-              <Portrait />
+              <Portrait image={'/images/jaosto/aalto_laura.jpg'} />
               <Name>Laura Aalto</Name>
               <Email>{t('email')}</Email>
             </ContactContainer>
