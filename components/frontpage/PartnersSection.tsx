@@ -23,7 +23,7 @@ const PartnersSection = ({ partners }: Props) => {
             .filter((p) => p.main)
             .map((partner) => (
               <MainLogo key={partner.name}>
-                <img src={partner.logoPath} alt={partner.name} />
+                <img src={partner.logoPath} alt={partner.name} height="300px" />
               </MainLogo>
             ))}
         </MainLogosContainer>
@@ -72,6 +72,7 @@ const MainLogosContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   gap: 2rem;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -98,6 +99,7 @@ const MainLogo = styled.div`
   width: 100%;
   max-width: 300px;
 `;
+
 const Logo = styled.div`
   position: relative;
   display: flex;
@@ -106,6 +108,10 @@ const Logo = styled.div`
   height: 200px;
   width: 100%;
   max-width: 200px;
+
+  & > img {
+    height: auto;
+  }
 `;
 
 export default PartnersSection;
