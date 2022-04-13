@@ -3,7 +3,6 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import Layout from '../components/layout/Layout';
 import Frontpage from '../components/frontpage/Frontpage';
-import { ReactNode } from 'react';
 
 type Props = {
   feed: InstagramPost[];
@@ -11,6 +10,9 @@ type Props = {
 
 const Home: NextPage<Props> = ({ feed }) => {
   const { t } = useTranslation('home');
+  const filteredFeed = feed.filter(
+    (feedItem) => feedItem.media_type !== 'VIDEO'
+  );
   return (
     <>
       <Head>
@@ -37,7 +39,7 @@ const Home: NextPage<Props> = ({ feed }) => {
         />
       </Head>
       <Layout navColor="portviini" imageUrl="/images/hero.jpg" setImage={true}>
-        <Frontpage feed={feed} />
+        <Frontpage feed={filteredFeed} />
       </Layout>
     </>
   );
