@@ -15,7 +15,7 @@ const partners = [
   },
   {
     name: 'Espoo',
-    logoPath: '/partner_logos/espoo_logo.png',
+    logoPath: '/partner_logos/espoo_logo.svg',
     main: true,
   },
   {
@@ -29,8 +29,28 @@ const partners = [
     main: false,
   },
   {
+    name: 'Ramboll',
+    logoPath: '/partner_logos/ramboll_logo.png',
+    main: false,
+  },
+  {
+    name: 'aTalent',
+    logoPath: '/partner_logos/aTalent_logo.svg',
+    main: false,
+  },
+  {
+    name: 'FCG',
+    logoPath: '/partner_logos/FCG_logo.png',
+    main: false,
+  },
+  {
     name: 'Sievo',
     logoPath: '/partner_logos/sievo_logo.png',
+    main: false,
+  },
+  {
+    name: 'Granlund',
+    logoPath: '/partner_logos/granlund_logo.png',
     main: false,
   },
 ];
