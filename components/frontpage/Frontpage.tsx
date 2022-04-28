@@ -49,8 +49,28 @@ const partners = [
     main: false,
   },
   {
+    name: 'Siili',
+    logoPath: '/partner_logos/siili_logo.png',
+    main: false,
+  },
+  {
     name: 'Granlund',
     logoPath: '/partner_logos/granlund_logo.png',
+    main: false,
+  },
+  {
+    name: 'Deloitte',
+    logoPath: '/partner_logos/deloitte_logo.png',
+    main: false,
+  },
+  {
+    name: 'RIL',
+    logoPath: '/partner_logos/ril_logo.png',
+    main: false,
+  },
+  {
+    name: 'Promler',
+    logoPath: '/partner_logos/promler_logo.png',
     main: false,
   },
 ];
