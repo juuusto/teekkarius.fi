@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const CurrentPageProvider = ({ children }: Props) => {
-  const [currentPage, setCurrentPage] = useState('');
+  const [currentPage, setCurrentPage] = useState('home');
 
   const setPage = (page: string) => {
     setCurrentPage(page);

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  feed: InstagramPost[];
+  feed: InstagramPost[] | null;
 };
 
 const InstagramSection = ({ feed }: Props) => {
@@ -10,7 +10,7 @@ const InstagramSection = ({ feed }: Props) => {
     <Section>
       <H2>Instagram</H2>
       <Container>
-        {feed.map((item: InstagramPost) => (
+        {feed?.map((item: InstagramPost) => (
           <ImageLink
             key={item.id}
             href={item.permalink}
