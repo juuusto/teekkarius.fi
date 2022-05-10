@@ -5,14 +5,13 @@ import Layout from '../components/layout/Layout';
 import Frontpage from '../components/frontpage/Frontpage';
 
 type Props = {
-  feed: InstagramPost[];
+  feed: InstagramPost[] | null;
 };
 
 const Home: NextPage<Props> = ({ feed }) => {
   const { t } = useTranslation('home');
-  const filteredFeed = feed.filter(
-    (feedItem) => feedItem.media_type !== 'VIDEO'
-  );
+  const filteredFeed =
+    feed?.filter((feedItem) => feedItem.media_type !== 'VIDEO') || null;
   return (
     <>
       <Head>
@@ -52,7 +51,7 @@ export async function getStaticProps() {
     `https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${process.env.IG_KEY}&limit=9`
   );
   const data = await res.json();
-  const feed = data.data;
+  const feed = data?.data ?? null;
 
   // Pass data to the page via props
   return { props: { feed }, revalidate: 300 };

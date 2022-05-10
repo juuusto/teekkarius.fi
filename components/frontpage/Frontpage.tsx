@@ -76,7 +76,7 @@ const partners = [
 ];
 
 type Props = {
-  feed: InstagramPost[];
+  feed: InstagramPost[] | null;
 };
 
 const Frontpage = ({ feed }: Props) => {

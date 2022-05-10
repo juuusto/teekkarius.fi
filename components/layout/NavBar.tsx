@@ -65,7 +65,14 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
         >
           <NavLinks burgerOpen={burgerOpen}>
             <Link href="/" passHref>
-              <A className="mobileOnly" burgerOpen={burgerOpen}>
+              <A
+                burgerOpen={burgerOpen}
+                mobileOnly
+                className={currentPage === 'home' ? 'active' : ''}
+                onClick={() => {
+                  setPage('home');
+                }}
+              >
                 {t('home')}
               </A>
             </Link>
@@ -224,7 +231,7 @@ const NavLinks = styled.div<{ burgerOpen: boolean }>`
   flex-direction: ${({ burgerOpen }) => (burgerOpen ? 'column' : 'row')};
 `;
 
-const A = styled.a<{ burgerOpen: boolean }>`
+const A = styled.a<{ burgerOpen: boolean; mobileOnly?: boolean }>`
   font-weight: 700;
   font-size: 1.25em;
   text-decoration: none;
@@ -252,19 +259,18 @@ const A = styled.a<{ burgerOpen: boolean }>`
     transform: scaleX(1);
   }
 
-  &.mobileOnly {
-    display: none;
+  @media screen and (min-width: 801px) {
+    display: ${(p) => (p.mobileOnly ? 'none' : 'initial')};
   }
 
   @media screen and (max-width: 800px) {
     padding: 0.25em 1em 1.25em 1em;
+    font-size: 1.25rem;
 
-    &.mobileOnly {
-      display: initial;
-    }
+    display: 'initial';
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (min-width: 801px) and (max-width: 1000px) {
     padding: 0.75em 0.5em 1.25em 0.5em;
     font-size: 1rem;
 
