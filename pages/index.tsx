@@ -38,7 +38,7 @@ const Home: NextPage<Props> = ({ feed }) => {
         />
       </Head>
       <Layout navColor="portviini" imageUrl="/images/hero.jpg" setImage={true}>
-        <Frontpage feed={filteredFeed} />
+        <Frontpage feed={filteredFeed ?? null} />
       </Layout>
     </>
   );

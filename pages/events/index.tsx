@@ -52,6 +52,21 @@ const EventsPage = ({ events }: Props) => {
               </a>
               .
             </P>
+            <P>
+              Juhlavuoden tapahtumat ovat reiluja ja yhdenvertaisia kaikille
+              eikä tapahtumissa hyväksytä minkäänlaista häirintää. Tapahtumissa
+              noudatetaan{' '}
+              <a
+                href="https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+                target="_blank"
+                rel="noreferrer"
+              >
+                AYY:n turvallisemman tilan periaatteita
+              </a>
+              . Jos kuitenkin kohtaat tapahtumissa epämiellyttävää käytöstä tai
+              häirintää, voit ottaa yhteyttä AYY:n häirintäyhdyshenkilöihin
+              hairinta@ayy.fi.
+            </P>
             <FilterButtonContainer>
               <FilterButton
                 active={filter === 'all'}

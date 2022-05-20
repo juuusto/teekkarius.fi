@@ -6,6 +6,7 @@
     "/": ["home"],
     "/events": ["events"],
     "/events/tekniikan-taikaa": ["events"],
+    "/events/paljukatsomo": ["events"],
     "/activities": ["activities"],
     "/corporate-relations": ["corporate"],
     "/contact": ["contact"]

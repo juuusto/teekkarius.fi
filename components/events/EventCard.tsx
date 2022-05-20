@@ -13,20 +13,22 @@ type Props = {
   last: boolean;
 };
 
+// Parse date format, 2022-04-10 -> 10.4.
+const formatDate = (date: string) => {
+  return `${date.slice(-2).replace(/^0+/, '')}.${date
+    .slice(-5, -3)
+    .replace(/^0+/, '')}.`;
+};
+
 const EventCard = ({ event, flipped, i, last }: Props) => {
   const { t, lang } = useTranslation('events');
+  console.log(event);
 
   // Set event attributes according to current language
   // If no Finnish translations, fallback to English
   const title = lang === 'fi' && event.Nimi ? event.Nimi : event.Title;
   const description =
     lang === 'fi' && event.Kuvaus ? event.Kuvaus : event.Description;
-
-  // Parse date format, 2022-04-10 -> 10.4.
-  const date = `${event.StartDate.slice(-2).replace(
-    /^0+/,
-    ''
-  )}.${event.StartDate.slice(-5, -3).replace(/^0+/, '')}.`;
 
   return (
     // $-starting variables are not passed to DOM -> no Next.js error
@@ -36,7 +38,10 @@ const EventCard = ({ event, flipped, i, last }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.3 + i * 0.3 } }}
     >
-      <Date $flipped={flipped}>{date}</Date>
+      <StartDate $flipped={flipped}>{formatDate(event.StartDate)}</StartDate>
+      {event?.EndDate && (
+        <EndDate $flipped={flipped}>{formatDate(event.EndDate)}</EndDate>
+      )}
       {event.Teekkarius150 && (
         <T150Wrapper>
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -87,7 +92,7 @@ const Card = styled.div<{ $flipped: boolean }>`
   }
 `;
 
-const Date = styled.span<{ $flipped: boolean }>`
+const StartDate = styled.span<{ $flipped: boolean }>`
   position: absolute;
   left: -60px;
   display: flex;
@@ -98,6 +103,39 @@ const Date = styled.span<{ $flipped: boolean }>`
   border-radius: 100%;
   z-index: 2;
   background-color: ${({ theme }) => theme.colors.portviini};
+
+  /* display: none; */
+
+  @media screen and (min-width: 800px) {
+    left: ${({ $flipped }) => ($flipped ? 'auto' : '-90px')};
+    right: ${({ $flipped }) => ($flipped ? '-90px' : 'auto')};
+  }
+`;
+
+const EndDate = styled.span<{ $flipped: boolean }>`
+  position: absolute;
+  left: -60px;
+  top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  z-index: 2;
+  background-color: ${({ theme }) => theme.colors.portviini};
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    top: -10px;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+
+    border-top: 16px solid ${({ theme }) => theme.colors.portviini};
+  }
 
   /* display: none; */
 
