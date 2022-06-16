@@ -87,6 +87,17 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
                 {t('events')}
               </A>
             </Link>
+            <Link href="/tpj" passHref>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'tpj' ? 'active' : ''}
+                onClick={() => {
+                  setPage('tpj');
+                }}
+              >
+                {t('tpj-title')}
+              </A>
+            </Link>
             <Link href="/activities" passHref>
               <A
                 burgerOpen={burgerOpen}
@@ -270,7 +281,17 @@ const A = styled.a<{ burgerOpen: boolean; mobileOnly?: boolean }>`
     display: 'initial';
   }
 
-  @media screen and (min-width: 801px) and (max-width: 1000px) {
+  @media screen and (min-width: 801px) and (max-width: 1001px) {
+    padding: 0.75em 0.5em 1.25em 0.5em;
+    font-size: 0.8rem;
+
+    &::after {
+      width: calc(100% - 1em);
+      left: 0.5em;
+    }
+  }
+
+  @media screen and (min-width: 1001px) and (max-width: 1250px) {
     padding: 0.75em 0.5em 1.25em 0.5em;
     font-size: 1rem;
 

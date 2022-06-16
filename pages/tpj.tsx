@@ -18,57 +18,27 @@ const MagicOfTechnologyPage = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <EventsSection>
           <Container>
-            <H1>Teekkariperinnejuhla</H1>
+            <H1>{t('tpj-title')}</H1>
             <KutsuContainer>
               <Kutsu />
             </KutsuContainer>
             <InfoContainer>
-              <H2>Infoa</H2>
+              <H1>{t('tpj-info')}</H1>
+              {t('tpj-body')
+                .split('\n')
+                .map((p, i) => (
+                  <P key={i}>{p}</P>
+                ))}
               <P>
-                Ilmoittautuminen 150. Teekkariperinnejuhlaan on auki
-                kutsuvieraille 1.-15.6. ja jäsenille 22.6-31.7. Ilmoittautuminen
-                tapahtuu kide.appissa, jota varten tarvitset oman tilin, jotta
-                pystyt ostamaan sieltä tuotteita. Tili kannattaa luoda ennen
-                ilmoittautumisen aukeamista ja apua tähän saat seuraavasta
-                osoitteesta{' '}
-                <a href="https://kide.app/help/terms">
-                  https://kide.app/help/terms
-                </a>
-                . Kide.app toimii sekä verkkosivuilla sekä sovelluksena
-                kännykässä. Ilmoittautumislinkin löydät klikkaamalla yllä olevan
-                kutsun sinettiä!
-              </P>
-              <P>
-                Ilmoittautumisessa kysytään osallistujatiedot, sekä esimerkiksi
-                sähköpostiosoite, jonne laitetaan kaikki tuleva informaatio
-                juhliin liittyen. Jos sinulla on avec, niin hänen tulee
-                ilmoittautua myös erikseen, mutta saat ostettua maksimissaan
-                kaksi lippua, jolloin saat täytettyä tarvittavat tiedot samalla
-                ostokerralla myös avecillesi. Ilmotietoja saa muokattua
-                ilmoittautumisen jälkeen helposti kide.apissa 7.8. asti.
-                Huomaathan että ostotapahtuma on sitova.
-              </P>
-              <P>
-                Tapahtumassa on myös käytössä Aalto-yliopiston ylioppilaskunnan
-                Code of Conduct, joka jokaisen osallistujan tulee hyväksyä lipun
-                ostaakseen. Tämän avulla haluamme varmistaa että tapahtuma on
-                jokaiselle osallistujalle turvallinen ja mielekäs tapahtuma.
-                Emme hyväksy minkäänlaista kiusaamista tai syrjintää
-                tapahtumassa. Lisätietoa ylioppilaskunnan Code of Conductista
-                voit löytää{' '}
                 <a
                   href="https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
                   target="_blank"
-                  rel="noreferrer noopener"
+                  rel="noreferrer"
                 >
-                  AYY:n nettisivuilta
+                  AYY Code of Conduct
                 </a>
-                .
               </P>
-              <P>
-                Tervetuloa 150. Teekkariperinnejuhlaan! Lisää kysymyksiä voi
-                laittaa osoitteeseen <i>teekkarius150@ayy.fi</i>.
-              </P>
+              <P>{t('tpj-body-ending')}</P>
             </InfoContainer>
           </Container>
         </EventsSection>
