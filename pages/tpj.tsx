@@ -23,12 +23,22 @@ const MagicOfTechnologyPage = () => {
               <Kutsu />
             </KutsuContainer>
             <InfoContainer>
-            <H1>{t('tpj-info')}</H1>
-                {t('tpj-body')
-                  .split('\n')
-                  .map((p, i) => (
-                    <P key={i}>{p}</P>
-                  ))}
+              <H1>{t('tpj-info')}</H1>
+              {t('tpj-body')
+                .split('\n')
+                .map((p, i) => (
+                  <P key={i}>{p}</P>
+                ))}
+              <P>
+                <a
+                  href="https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  AYY Code of Conduct
+                </a>
+              </P>
+              <P>{t('tpj-body-ending')}</P>
             </InfoContainer>
           </Container>
         </EventsSection>

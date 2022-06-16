@@ -7,7 +7,7 @@
     "/events": ["events"],
     "/events/tekniikan-taikaa": ["events"],
     "/events/paljukatsomo": ["events"],
-    "/events/tpj": ["events"],
+    "/tpj": ["events"],
     "/activities": ["activities"],
     "/corporate-relations": ["corporate"],
     "/contact": ["contact"]

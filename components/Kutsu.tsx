@@ -60,9 +60,18 @@ const Kutsu = () => {
             <p>
               Vuosijuhlia innolla odottaen ja Teekkarius 150
               vuosijuhlatoimikuntien puolesta,
-              <br />
-              Milja Koskela
-              <br />
+            </p>
+            <div
+              style={{ width: '100%', display: 'grid', justifyItems: 'center' }}
+            >
+              <img
+                style={{ height: '5rem' }}
+                src="/images/milja_allekirjoitus.png"
+                alt=""
+              />
+            </div>
+            <p>
+              Milja Koskela <br />
               Vuosijuhlatirehtööri
             </p>
           </FrontBottom>
@@ -105,8 +114,12 @@ const Container = styled.div<{ trigger: boolean }>`
   transform-style: preserve-3d;
   min-height: ${(p) => (p.trigger ? '54rem' : '20rem')};
   transition: all 0.5s linear;
-  color: black;
+  color: ${(p) => p.theme.colors.betoni};
   text-align: center;
+
+  & a {
+    color: inherit;
+  }
 
   @media screen and (max-width: 800px) {
     min-height: ${(p) => (p.trigger ? '44rem' : '20rem')};
@@ -116,6 +129,9 @@ const Container = styled.div<{ trigger: boolean }>`
     font-size: clamp(1.3rem, 2vw, 1.5rem);
 
     @media screen and (max-width: 800px) {
+      font-size: 1rem;
+    }
+    @media screen and (max-width: 600px) {
       font-size: 0.8rem;
     }
   }
@@ -127,7 +143,7 @@ const H2 = styled.h2`
   text-align: center;
 
   @media screen and (max-width: 800px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -199,9 +215,13 @@ const CardMiddle = styled.div`
   display: grid;
   align-items: center;
   z-index: -1;
-  background-color: ${(p) => p.theme.colors.polysteekki};
+  background: url('/images/lakkitausta.jpg');
+  background-position-y: 17.3%;
   width: 100%;
   height: 100%;
+  @media screen and (max-width: 800px) {
+    background-position-y: 13.3%;
+  }
 `;
 
 const CardTop = styled(Card)`
@@ -220,7 +240,7 @@ const FrontTop = styled.div`
   width: 100%;
   height: 100%;
   padding: 1rem;
-  background: ${(p) => p.theme.colors.polysteekki};
+  background: url('/images/lakkitausta.jpg');
   transform-origin: bottom;
   transform: rotateX(180deg) translateY(100%);
   & h1 {
@@ -256,9 +276,14 @@ const FrontBottom = styled.div`
   width: 100%;
   height: 100%;
   padding: 1rem;
-  background: ${(p) => p.theme.colors.polysteekki};
+  background: url('/images/lakkitausta.jpg');
+  background-position-y: 37%;
   transform-origin: bottom;
   transform: rotateX(180deg) translateY(100%);
+
+  @media screen and (max-width: 800px) {
+    background-position-y: 29%;
+  }
 `;
 
 const BackBottom = styled.div`
