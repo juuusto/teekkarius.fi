@@ -49,7 +49,11 @@ const MagicOfTechnologyPage = () => {
                   AYY Code of Conduct
                 </a>
               </P>
-              <P>{t('tpj-body-ending')}</P>
+              <P>{t('tpj-body-ending')
+                .split('\n')
+                .map((p, i) => (
+                  <P key={i}>{p}</P>
+                ))}</P>
             </InfoContainer>
           </Container>
         </EventsSection>
