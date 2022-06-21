@@ -37,9 +37,8 @@ const Kutsu = () => {
       <CardContainer trigger={trigger}>
         <CardMiddle>
           <p>
-            Juhlan hinta on AYY:n jäsenille ja opiskelijoille 100 € ja
-            valmistuneille 150 €. Silliaamiaisen hinta on jäsenille 25 € ja
-            valmistuneille 30 €.
+            Juhlan hinta on opiskelijoille 100€ ja valmistuneille 150€.
+            Silliaamiaisen hinta on opiskelijoille 25€ ja valmistuneille 30€.
             <br />
             <br />
             Pukukoodina tässä juhlassa on juhlapuku akateemisin kunniamerkein.
@@ -225,7 +224,7 @@ const CardMiddle = styled.div`
 `;
 
 const CardTop = styled(Card)`
-  z-index: 300;
+  z-index: 30;
   transform: rotateX(0.1deg);
   animation: ${(p) =>
     p.trigger
@@ -243,6 +242,8 @@ const FrontTop = styled.div`
   background: url('/images/lakkitausta.jpg');
   transform-origin: bottom;
   transform: rotateX(180deg) translateY(100%);
+  backface-visibility: hidden;
+
   & h1 {
     text-align: center;
     margin-bottom: 1rem;
@@ -256,6 +257,7 @@ const BackTop = styled.div`
   transform-origin: bottom;
   backface-visibility: hidden;
   text-align: center;
+
   box-shadow: 0 8px 8px -8px rgba(255, 255, 255, 0.2);
   transform: rotateX(0deg) translateY(0%);
 `;
