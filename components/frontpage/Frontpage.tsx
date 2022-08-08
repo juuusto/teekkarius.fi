@@ -54,11 +54,6 @@ const partners = [
     main: false,
   },
   {
-    name: 'Granlund',
-    logoPath: '/partner_logos/granlund_logo.png',
-    main: false,
-  },
-  {
     name: 'Deloitte',
     logoPath: '/partner_logos/deloitte_logo.png',
     main: false,
