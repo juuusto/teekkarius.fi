@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import t150 from '../../public/images/T150.svg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   event: T150Event;
@@ -22,13 +23,15 @@ const formatDate = (date: string) => {
 
 const EventCard = ({ event, flipped, i, last }: Props) => {
   const { t, lang } = useTranslation('events');
-  console.log(event);
 
   // Set event attributes according to current language
   // If no Finnish translations, fallback to English
   const title = lang === 'fi' && event.Nimi ? event.Nimi : event.Title;
+  // Regex to fix multiple line breaks in a single markdown tag
   const description =
-    lang === 'fi' && event.Kuvaus ? event.Kuvaus : event.Description;
+    lang === 'fi' && event.Kuvaus
+      ? event.Kuvaus.replace(/\n/gi, '\n \n')
+      : event.Description.replace(/\n/gi, '\n \n');
 
   return (
     // $-starting variables are not passed to DOM -> no Next.js error
@@ -51,7 +54,9 @@ const EventCard = ({ event, flipped, i, last }: Props) => {
       )}
       <Title>{title}</Title>
       <Organizer>{event.Organizer}</Organizer>
-      <P>{description}</P>
+
+      <StyledReactMarkdown>{description}</StyledReactMarkdown>
+
       <Link href={event.Link} passHref>
         <A target="_blank" rel="noreferrer">
           {t('eventPage')}
@@ -174,7 +179,7 @@ const Organizer = styled.p`
   margin-bottom: 1rem;
 `;
 
-const P = styled.p`
+const StyledReactMarkdown = styled(ReactMarkdown)`
   margin-bottom: 1.5rem;
 `;
 
