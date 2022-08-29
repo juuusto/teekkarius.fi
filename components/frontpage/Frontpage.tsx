@@ -73,6 +73,11 @@ const partners = [
     logoPath: '/partner_logos/teekkari_speksi_logo.png',
     main: false,
   },
+  {
+    name: 'VTT',
+    logoPath: '/partner_logos/VTT_logo.png',
+    main: false,
+  },
 ];
 
 type Props = {
