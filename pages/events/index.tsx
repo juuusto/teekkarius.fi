@@ -8,6 +8,7 @@ import FilterButton from '../../components/events/FilterButton';
 import Image from 'next/image';
 import skumppalasit from '../../public/images/Skumppalasit.svg';
 import lakki from '../../public/images/Lakki.svg';
+import { isMoreThanAWeekOld } from '../../utils/isMoreThanAWeekOld';
 
 type Props = {
   events: T150Event[];
@@ -88,15 +89,24 @@ const EventsPage = ({ events }: Props) => {
               </FilterButton>
             </FilterButtonContainer>
             {filteredEvents.length === 0 && <p>No events found.</p>}
-            {filteredEvents.map((event, i) => (
-              <EventCard
-                key={event.id + Math.random()}
-                event={event}
-                flipped={i % 2 === 0 ? false : true}
-                i={i}
-                last={i === filteredEvents.length - 1}
-              />
-            ))}
+            {filteredEvents
+              .filter((event) => {
+                if (event.EndDate && isMoreThanAWeekOld(event.EndDate)) {
+                  return false;
+                } else if (isMoreThanAWeekOld(event.StartDate)) {
+                  return false;
+                }
+                return true;
+              })
+              .map((event, i) => (
+                <EventCard
+                  key={event.id + Math.random()}
+                  event={event}
+                  flipped={i % 2 === 0 ? false : true}
+                  i={i}
+                  last={i === filteredEvents.length - 1}
+                />
+              ))}
           </Container>
           <ImageWrapper>
             <Image
