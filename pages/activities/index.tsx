@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Activity from '../../components/activities/Activity';
 import PointCardCanvas from '../../components/activities/PointCardCanvas';
 import miettijä from '../../public/images/miettijä.jpg';
-import fuksipiste from '../../public/images/fuksipistekortti.jpg'
+import fuksipiste from '../../public/images/fuksipistekortti.png'
 import Image from 'next/image';
 
 const ActivitiesPage = () => {
