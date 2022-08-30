@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Activity from '../../components/activities/Activity';
 import PointCardCanvas from '../../components/activities/PointCardCanvas';
 import miettijä from '../../public/images/miettijä.jpg';
+import fuksipiste from '../../public/images/fuksipistekortti.jpg'
 import Image from 'next/image';
 
 const ActivitiesPage = () => {
@@ -27,6 +28,14 @@ const ActivitiesPage = () => {
               <Image
                 src={miettijä}
                 alt="History magazine"
+                layout="fill"
+                priority
+              />
+            </Activity>
+            <Activity title="fuksi-point-card-title" body="fuksi-point-card-body">
+              <Image
+                src={fuksipiste}
+                alt="Fuksipistekortti"
                 layout="fill"
                 priority
               />
