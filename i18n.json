@@ -10,6 +10,7 @@
     "/tpj": ["events"],
     "/activities": ["activities"],
     "/corporate-relations": ["corporate"],
-    "/contact": ["contact"]
+    "/contact": ["contact"],
+    "/tpv": ["events"]
   }
 }
