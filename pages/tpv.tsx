@@ -1,17 +1,67 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Layout from '../components/layout/Layout';
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 
 const TorniParts = [
-  { title: 'Polin Appro', latest: false, open: true },
-  { title: 'Viimeisin tapahtuma', latest: true, open: true },
-  { title: 'Tätä ei oo viel julkastu', latest: false, open: false },
+  {
+    title: 'Polin Appro',
+    title_en: 'Polin Appro',
+    latest: false,
+    open: true,
+    imgPath1: '/torni/polin_appro/polin_appro1.svg',
+    imgPath2: '/torni/polin_appro/polin_appro2.svg',
+    imgPath3: '/torni/polin_appro/polin_appro3.svg',
+    link: 'https://www.facebook.com/events/1438238686664471',
+  },
+  {
+    title: 'Elonkorjuu',
+    title_en: 'Elonkorjuu',
+    latest: false,
+    open: true,
+    imgPath1: '/torni/elonkorjuu/elonkorjuu1.png',
+    imgPath2: '/torni/elonkorjuu/elonkorjuu2.png',
+    imgPath3: '/torni/elonkorjuu/elonkorjuu3.png',
+    link: 'https://www.facebook.com/events/363702765836992',
+  },
+  {
+    title: 'Megakroketti',
+    title_en: 'Mega Croquet',
+    latest: true,
+    open: true,
+    imgPath1: '/torni/megakroke/megakroke_1.svg',
+    imgPath2: '/torni/megakroke/megakroke_2.svg',
+    imgPath3: '/torni/megakroke/megakroke_3.svg',
+    link: 'https://www.facebook.com/events/800214767834651',
+  },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
+  { title: '', latest: false, open: false },
 ];
 
 const TPVPage = () => {
-  const { t } = useTranslation('events');
+  const { t, lang } = useTranslation('events');
+  const titleRef = useRef<any>(null);
+
+  useEffect(() => {
+    const elementPosition = titleRef.current.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - 200;
+    setTimeout(() => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }, 500);
+  }, []);
+
+  const handleScroll = () => {};
 
   return (
     <>
@@ -23,31 +73,63 @@ const TPVPage = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <H1>{t('tpv-title')}</H1>
-            <img src={'/torni/tornihuippu.png'} alt="Top of the Poli tower" />
+            <div style={{ textAlign: 'center', position: 'relative' }}>
+              <img
+                src={'/torni/tornihuippu.png'}
+                alt="Top of the Poli tower"
+                onLoad={handleScroll}
+              />
+              <H1 ref={titleRef}>{t('tpv-title')}</H1>
+            </div>
             {TorniParts.map((torni, index) => (
               <TorniContainer key={index}>
                 <TorniImage src={'/torni/torni.png'} alt="" />
                 <TorniInfo>
                   <KarmiContainer>
-                    <Karmi glow={torni.latest}>
+                    <Karmi
+                      glow={torni.latest}
+                      href={torni.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <KarmiImage
-                        style={{ marginBottom: 20 }}
-                        src="/torni/ikkunamask.svg"
+                        src={
+                          torni.open ? torni.imgPath1 : '/torni/ikkunaovet.svg'
+                        }
                         alt=""
                       />
                       <KarmiImage src="/torni/karmit.svg" alt="" />
                     </Karmi>
-                    <Karmi glow={torni.latest}>
-                      <KarmiImage src="/torni/ikkunamask.svg" alt="" />
+                    <Karmi
+                      glow={torni.latest}
+                      href={torni.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <KarmiImage
+                        src={
+                          torni.open ? torni.imgPath2 : '/torni/ikkunaovet.svg'
+                        }
+                        alt=""
+                      />
                       <KarmiImage src="/torni/karmit.svg" alt="" />
                     </Karmi>
-                    <Karmi glow={torni.latest}>
-                      <KarmiImage src="/torni/ikkunamask.svg" alt="" />
+                    <Karmi
+                      glow={torni.latest}
+                      href={torni.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <KarmiImage
+                        src={
+                          torni.open ? torni.imgPath3 : '/torni/ikkunaovet.svg'
+                        }
+                        alt=""
+                      />
                       <KarmiImage src="/torni/karmit.svg" alt="" />
                     </Karmi>
                   </KarmiContainer>
-                  <H2>{torni.title}</H2>
+                  <H2>{lang === 'fi' ? torni.title : torni.title_en}</H2>
                 </TorniInfo>
               </TorniContainer>
             ))}
@@ -95,10 +177,19 @@ const Container = styled.div`
 const H1 = styled.h1`
   font-size: 3rem;
   font-weight: bolder;
+  margin-top: 10rem;
   margin-bottom: 4rem;
   font-family: 'KionaBold';
   line-height: 1;
   z-index: 2;
+
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  bottom: clamp(4rem, 30vw, 20rem);
 
   @media screen and (max-width: 800px) {
     font-size: 1.5rem;
@@ -137,7 +228,7 @@ const KarmiImage = styled.img`
 `;
 
 const KarmiContainer = styled.div`
-  height: 70%;
+  height: 80%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   display: flex;
@@ -146,10 +237,11 @@ const KarmiContainer = styled.div`
   gap: clamp(1rem, 4vw, 6rem);
 `;
 
-const Karmi = styled.div<{ glow: boolean }>`
+const Karmi = styled.a<{ glow: boolean }>`
   position: relative;
   width: 100%;
-  filter: ${(p) => (p.glow ? 'drop-shadow( 0px 0px 20px #fffaa5)' : '')};
+  display: grid;
+  filter: ${(p) => (p.glow ? 'drop-shadow( 0px 0px 10px #fffaa5)' : '')};
 `;
 
 export default TPVPage;
