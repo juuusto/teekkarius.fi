@@ -87,6 +87,17 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
                 {t('events')}
               </A>
             </Link>
+            <Link href="/tpv" passHref>
+              <A
+                burgerOpen={burgerOpen}
+                className={currentPage === 'tpv' ? 'active' : ''}
+                onClick={() => {
+                  setPage('tpv');
+                }}
+              >
+                {t('events:tpv-title')}
+              </A>
+            </Link>
             <Link href="/tpj" passHref>
               <A
                 burgerOpen={burgerOpen}
@@ -95,7 +106,7 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
                   setPage('tpj');
                 }}
               >
-                {t('tpj-title')}
+                {'TPJ'}
               </A>
             </Link>
             <Link href="/activities" passHref>
