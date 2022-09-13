@@ -95,7 +95,7 @@ const NavBar = ({ navColor, imageUrl, setImage }: Props) => {
                   setPage('tpv');
                 }}
               >
-                {t('events:tpv-title')}
+                {t('tpv-title')}
               </A>
             </Link>
             <Link href="/tpj" passHref>
