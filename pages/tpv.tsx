@@ -8,6 +8,7 @@ const TorniParts = [
   {
     title: 'Polin Appro',
     title_en: 'Polin Appro',
+    date: '9. - 10.11',
     latest: false,
     open: true,
     imgPath1: '/torni/polin_appro/polin_appro1.svg',
@@ -18,6 +19,7 @@ const TorniParts = [
   {
     title: 'Elonkorjuu',
     title_en: 'Elonkorjuu',
+    date: '11.11',
     latest: false,
     open: true,
     imgPath1: '/torni/elonkorjuu/elonkorjuu1.png',
@@ -28,6 +30,7 @@ const TorniParts = [
   {
     title: 'Megakroketti',
     title_en: 'Mega Croquet',
+    date: '7.11',
     latest: true,
     open: true,
     imgPath1: '/torni/megakroke/megakroke_1.svg',
@@ -130,6 +133,7 @@ const TPVPage = () => {
                     </Karmi>
                   </KarmiContainer>
                   <H2>{lang === 'fi' ? torni.title : torni.title_en}</H2>
+                  <H2>{torni.date}</H2>
                 </TorniInfo>
               </TorniContainer>
             ))}
