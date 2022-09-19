@@ -23,6 +23,14 @@ const MagicOfTechnologyPage = () => {
               <Kutsu />
             </KutsuContainer>
             <InfoContainer>
+              <H1>{t('tpj-ukk-info')}</H1>
+              {t('tpj-ukk')
+                .split('\n')
+                .map((p, i) => (
+                  <P key={i}>{p}</P>
+                ))}
+            </InfoContainer>
+            <InfoContainer>
               <H1>{t('tpj-info')}</H1>
               {t('tpj-body')
                 .split('\n')
