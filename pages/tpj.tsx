@@ -31,23 +31,6 @@ const MagicOfTechnologyPage = () => {
                 ))}
             </InfoContainer>
             <InfoContainer>
-              <H1>{t('tpj-info')}</H1>
-              {t('tpj-body')
-                .split('\n')
-                .map((p, i) => (
-                  <P key={i}>{p}</P>
-                ))}
-              <P>
-                {' '}
-                <a href="https://kide.app/help/terms">
-                  https://kide.app/help/terms
-                </a>
-              </P>
-              {t('tpj-body-2')
-                .split('\n')
-                .map((p, i) => (
-                  <P key={i}>{p}</P>
-                ))}
               <P>
                 <a
                   href="https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
@@ -57,11 +40,6 @@ const MagicOfTechnologyPage = () => {
                   AYY Code of Conduct
                 </a>
               </P>
-              <P>{t('tpj-body-ending')
-                .split('\n')
-                .map((p, i) => (
-                  <P key={i}>{p}</P>
-                ))}</P>
             </InfoContainer>
           </Container>
         </EventsSection>
