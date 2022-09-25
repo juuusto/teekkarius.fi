@@ -62,7 +62,17 @@ const TorniParts = [
     imgPath2: '/torni/laulukilpailu/laulukilpailu_ikkuna_2.svg',
     imgPath3: '/torni/laulukilpailu/laulukilpailu_ikkuna_3.svg',    
     link: 'https://www.facebook.com/events/482830250144981/'},
-  { title: '', latest: false, open: false },
+  { 
+    title: 'Kiltakoitokset',
+    title_en: 'Battle of Guilds',
+    date: '17.11', 
+    latest: true, 
+    open: true,
+    imgPath1: '/torni/kiltakoitokset/kiltakoitokset_1.svg',
+    imgPath2: '/torni/kiltakoitokset/kiltakoitokset_2.svg',
+    imgPath3: '/torni/kiltakoitokset/kiltakoitokset_3.svg',    
+    link: 'https://www.facebook.com/events/467859151919333'    
+  },
   { title: '', latest: false, open: false },
   { title: '', latest: false, open: false },
 ];
