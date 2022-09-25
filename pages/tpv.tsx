@@ -57,7 +57,10 @@ const TorniParts = [
     title_en: 'Song Contest Sitsit',
     date: '16.11',
     latest: false, 
-    open: true 
+    open: true,
+    imgPath1: '/torni/elonkorjuu/elonkorjuu1.png',
+    imgPath2: '/torni/elonkorjuu/elonkorjuu2.png',
+    imgPath3: '/torni/elonkorjuu/elonkorjuu3.png',    
     link: 'https://www.facebook.com/events/482830250144981/'},
   { title: '', latest: false, open: false },
   { title: '', latest: false, open: false },
