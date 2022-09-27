@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import BlocksSection from './BlocksSection';
 import HeroSection from './HeroSection';
@@ -85,13 +86,18 @@ type Props = {
 };
 
 const Frontpage = ({ feed }: Props) => {
+  const { t } = useTranslation('home');
   return (
     <>
       <HeroSection />
       <BlocksSection />
       <SocialMediaSection />
       <InstagramSection feed={feed} />
-      <PartnersSection partners={partners} />
+      <PartnersSection
+        partners={partners}
+        mainTitle={t('main_partners')}
+        othersTitle={t('partners')}
+      />
     </>
   );
 };
