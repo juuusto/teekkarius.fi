@@ -4,6 +4,57 @@ import Layout from '../components/layout/Layout';
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import Kutsu from '../components/Kutsu';
+import ReactMarkdown from 'react-markdown';
+import PartnersSection from '../components/frontpage/PartnersSection';
+
+// tpj sivun yhteistyökumppanit
+const partners = [
+  {
+    name: 'Ramboll',
+    logoPath: '/partner_logos/ramboll_logo.png',
+    main: true,
+  },
+  {
+    name: 'FCG',
+    logoPath: '/partner_logos/FCG_logo.png',
+    main: false,
+  },
+  {
+    name: 'TEK',
+    logoPath: '/partner_logos/TEK_logo.png',
+    main: false,
+  },
+  {
+    name: 'ABB',
+    logoPath: '/partner_logos/ABB_logo.svg',
+    main: false,
+  },
+  {
+    name: 'aTalent',
+    logoPath: '/partner_logos/aTalent_logo.svg',
+    main: false,
+  },
+  {
+    name: 'Espoo',
+    logoPath: '/partner_logos/espoo_logo.svg',
+    main: false,
+  },
+  {
+    name: 'Deloitte',
+    logoPath: '/partner_logos/deloitte_logo.png',
+    main: false,
+  },
+  {
+    name: 'Sievo',
+    logoPath: '/partner_logos/sievo_logo.png',
+    main: false,
+  },
+  {
+    name: 'Siili',
+    logoPath: '/partner_logos/siili_logo.png',
+    main: false,
+  },
+];
 
 const MagicOfTechnologyPage = () => {
   const { t } = useTranslation('events');
@@ -24,25 +75,21 @@ const MagicOfTechnologyPage = () => {
             </KutsuContainer>
             <InfoContainer>
               <H1>{t('tpj-ukk-info')}</H1>
-              {t('tpj-ukk')
+              {/* {t('tpj-ukk')
                 .split('\n')
                 .map((p, i) => (
                   <P key={i}>{p}</P>
-                ))}
-            </InfoContainer>
-            <InfoContainer>
-              <P>
-                <a
-                  href="https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  AYY Code of Conduct
-                </a>
-              </P>
+                ))} */}
+              <StyledMarkdown>{t('tpj-ukk')}</StyledMarkdown>
             </InfoContainer>
           </Container>
         </EventsSection>
+        <PartnersSection
+          partners={partners}
+          onlyOneMainSponsor
+          mainTitle={t('tpj-mainpartners')}
+          othersTitle={t('tpj-partners')}
+        />
       </Layout>
     </>
   );
@@ -101,6 +148,11 @@ const InfoContainer = styled.section`
   gap: 2rem;
   margin-top: 2rem;
 
+  & > a {
+    font-size: 1rem;
+    color: inherit;
+  }
+
   @media screen and (max-width: 800px) {
     grid-template-columns: 1fr;
     padding: 0 1rem;
@@ -129,39 +181,20 @@ const H2 = styled.h2`
   line-height: 1;
 `;
 
-const P = styled.p`
-  margin-bottom: 1rem;
+const StyledMarkdown = styled(ReactMarkdown)`
   font-size: 1rem;
 
-  & > a {
+  & > * {
+    margin-bottom: 0.7rem;
+  }
+
+  & > p {
+    margin-bottom: 1.5rem;
+  }
+
+  & a {
     color: inherit;
   }
-`;
-
-const LargeText = styled.p`
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-family: 'KionaBold';
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-bottom: -20rem;
-
-  @media screen and (max-width: 800px) {
-    margin-bottom: 0;
-  }
-
-  @media screen and (min-width: 800px) and (max-width: 1200px) {
-    margin-bottom: -10rem;
-  }
-`;
-
-const InfoTextContainer = styled.div`
-  margin: 1rem;
-  color: ${({ theme }) => theme.colors.betoni};
 `;
 
 export default MagicOfTechnologyPage;

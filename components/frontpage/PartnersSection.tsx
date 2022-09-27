@@ -10,24 +10,31 @@ type Partner = {
 
 type Props = {
   partners: Partner[];
+  onlyOneMainSponsor?: boolean;
+  mainTitle: string | React.ReactNode;
+  othersTitle: string | React.ReactNode;
 };
 
-const PartnersSection = ({ partners }: Props) => {
-  const { t } = useTranslation('home');
+const PartnersSection = ({
+  partners,
+  onlyOneMainSponsor,
+  mainTitle,
+  othersTitle,
+}: Props) => {
   return (
     <Section>
       <Container>
-        <H2>{t('main_partners')}</H2>
-        <MainLogosContainer>
+        <H2>{mainTitle}</H2>
+        <MainLogosContainer $oneColumn={onlyOneMainSponsor}>
           {partners
             .filter((p) => p.main)
             .map((partner) => (
               <MainLogo key={partner.name}>
-                <img src={partner.logoPath} alt={partner.name} height="300px" />
+                <img src={partner.logoPath} alt={partner.name} />
               </MainLogo>
             ))}
         </MainLogosContainer>
-        <H2>{t('partners')}</H2>
+        <H2>{othersTitle}</H2>
         <LogosContainer>
           {partners
             .filter((p) => !p.main)
@@ -67,9 +74,9 @@ const H2 = styled.h2`
   margin: 3rem 0;
 `;
 
-const MainLogosContainer = styled.div`
+const MainLogosContainer = styled.div<{ $oneColumn: boolean | undefined }>`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${(p) => (p.$oneColumn ? '1fr' : '1fr 1fr')};
   justify-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -95,7 +102,7 @@ const MainLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: auto;
   width: 100%;
   max-width: 300px;
 `;
