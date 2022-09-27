@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100%;
+    background-color: #3D0024;
   }
   /*
     Typographic tweaks!
