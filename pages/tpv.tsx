@@ -36,7 +36,7 @@ const TorniParts = [
     imgPath1: '/torni/polin_appro/polin_appro1.svg',
     imgPath2: '/torni/polin_appro/polin_appro2.svg',
     imgPath3: '/torni/polin_appro/polin_appro3.svg',
-    link: 'https://www.facebook.com/events/1438238686664471',
+    link: 'www.polinappro.fi',
   },
   {
     title: 'Elonkorjuu',
