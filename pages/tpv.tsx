@@ -57,7 +57,7 @@ const TorniParts = [
     imgPath1: '/torni/kehdot/kehdot_1.svg',
     imgPath2: '/torni/kehdot/kehdot_2.svg',
     imgPath3: '/torni/kehdot/kehdot_3.svg',
-    link: 'https://www.facebook.com/events/467859151919333/',    
+    link: 'https://www.facebook.com/events/621975822776751/',    
   },
   { title: 'Fuksien Juhlasitsit',
     title_en: "Fuksi Grand sitsit",
