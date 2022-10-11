@@ -45,6 +45,11 @@ const partners = [
     main: false,
   },
   {
+    name: 'Vaisala',
+    logoPath: '/partner_logos/Vaisala_logo.png',
+    main: false,
+  },
+  {
     name: 'Sievo',
     logoPath: '/partner_logos/sievo_logo.png',
     main: false,
