@@ -51,6 +51,7 @@ const TorniParts = [
   { 
     title: 'Kullervo-konsertti',
     title_en: 'Kullervo Concert',
+    date: '12.11', 
     latest: true, 
     open: true,
     imgPath1: '/torni/kullervo/kullervo_1.svg',
