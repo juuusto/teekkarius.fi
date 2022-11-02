@@ -25,6 +25,16 @@ const TorniParts = [
     imgPath2: '/torni/megakroke/megakroke_2.svg',
     imgPath3: '/torni/megakroke/megakroke_3.svg',
     link: 'https://www.facebook.com/events/800214767834651',
+  },{
+    title: 'Punaisen laulukirjan julkaisu ja läpilaulanta', 
+    title_en: 'Publication of the Red Song Book',
+    date: '8.11', 
+    latest: true, 
+    open: true,
+    imgPath1: '/torni/punainen/punainen_1.svg',
+    imgPath2: '/torni/punainen/punainen_2.svg',
+    imgPath3: '/torni/punainen/punainen_3.svg',    
+    link: 'https://www.facebook.com/events/782402576157929'
   },
   {
     title: 'Polin Appro',
