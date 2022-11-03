@@ -23,9 +23,9 @@ const BlocksSection = () => {
             <Image src={T150_block_1} alt="Teekkarius 150" />
             <BlockText>{t('nav:activities')}</BlockText>
           </BlockItem>
-          <BlockItem href="/tpj">
+          <BlockItem href="/quiz">
             <Image src={T150_block_2} alt="Teekkarius 150" />
-            <BlockText>{t('nav:tpj-title')}</BlockText>
+            <BlockText>{t('nav:quiz')}</BlockText>
           </BlockItem>
           <BlockItem href="/contact">
             <BlockText>{t('nav:contact')}</BlockText>

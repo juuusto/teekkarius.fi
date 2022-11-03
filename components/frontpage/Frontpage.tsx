@@ -84,6 +84,11 @@ const partners = [
     logoPath: '/partner_logos/VTT_logo.png',
     main: false,
   },
+  {
+    name: 'Aalto-yliopiston tekniikan tukisäätiö',
+    logoPath: '/partner_logos/Aalto-yliopiston_tekniikan_tukisäätiö_LOGO_Fi.png',
+    main: false,
+  },
 ];
 
 type Props = {
