@@ -86,7 +86,7 @@ const partners = [
   },
   {
     name: 'Aalto-yliopiston tekniikan tukisäätiö',
-    logoPath: '/partner_logos/Aalto-yliopiston_tekniikan_tukisäätiö_LOGO_Fi.png',
+    logoPath: '/partner_logos/aalto_saatio.png',
     main: false,
   },
 ];
