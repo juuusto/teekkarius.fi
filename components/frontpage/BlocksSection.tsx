@@ -25,7 +25,7 @@ const BlocksSection = () => {
           </BlockItem>
           <BlockItem href="/quiz">
             <Image src={T150_block_2} alt="Teekkarius 150" />
-            <BlockText>{t('nav:quiz')}</BlockText>
+            <BlockText>{t('Quiz')}</BlockText>
           </BlockItem>
           <BlockItem href="/contact">
             <BlockText>{t('nav:contact')}</BlockText>
