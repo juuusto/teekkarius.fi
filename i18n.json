@@ -11,6 +11,7 @@
     "/activities": ["activities"],
     "/corporate-relations": ["corporate"],
     "/contact": ["contact"],
-    "/tpv": ["events"]
+    "/tpv": ["events"],
+    "/tervehdys": ["tervehdys"]
   }
 }
