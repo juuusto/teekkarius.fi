@@ -1,0 +1,14 @@
+[
+    {
+        "slug": "testi-homma",
+        "img": "test.jpeg",
+        "title": "Testi homma",
+        "description": "Testi homma desc"
+    },
+    {
+        "slug": "teemu-teekkari",
+        "img": "teemu_teekkari.jpeg",
+        "title": "Teemu Teekkari",
+        "description": "Teemu Teekkari on teemu teekkarin patsas joka on teemulle hyvässä paikassa smökissä!"
+    }
+]
