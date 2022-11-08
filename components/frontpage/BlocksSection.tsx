@@ -27,8 +27,8 @@ const BlocksSection = () => {
             <Image src={T150_block_2} alt="Teekkarius 150" />
             <BlockText>{t('Quiz')}</BlockText>
           </BlockItem>
-          <BlockItem href="/contact">
-            <BlockText>{t('nav:contact')}</BlockText>
+          <BlockItem href="https://otaguessr.fi">
+            <BlockText>{t('otaguessr')}</BlockText>
           </BlockItem>
         </BlocksContainer>
       </Container>
