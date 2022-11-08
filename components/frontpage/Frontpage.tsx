@@ -89,6 +89,11 @@ const partners = [
     logoPath: '/partner_logos/aalto_saatio.png',
     main: false,
   },
+  {
+    name: 'IE',
+    logoPath: '/partner_logos/IE_logo.png',
+    main: false,
+  },
 ];
 
 type Props = {
