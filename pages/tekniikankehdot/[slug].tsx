@@ -87,4 +87,20 @@ const Img = styled.img`
   border-radius: 1rem;
 `;
 
+const StyledMarkdown = styled(ReactMarkdown)`
+  font-size: 1rem;
+
+  & > * {
+    margin-bottom: 0.7rem;
+  }
+
+  & > p {
+    margin-bottom: 1.5rem;
+  }
+
+  & a {
+    color: inherit;
+  }
+`;
+
 export default TekniikanKehdot;
