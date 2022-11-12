@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Layout from "../../components/layout/Layout";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
+import ReactMarkdown from 'react-markdown';
 import kehdot from "./kehdot.json";
 
 const TekniikanKehdot = () => {
@@ -22,7 +22,7 @@ const TekniikanKehdot = () => {
           <Container>
             <Img src={`/tekniikankehdot/${kehto.img}`} alt={kehto.title} />
             <H1>{kehto.title}</H1>
-            <P>{kehto.description}</P>
+            <StyledMarkdown>{kehto.description}</StyledMarkdown>
           </Container>
         </Section>
       </Layout>
