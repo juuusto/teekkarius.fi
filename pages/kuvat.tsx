@@ -6,9 +6,23 @@ import ImageGallery from 'react-image-gallery';
 
 const images = [
     {
-        original: '/torni/teekkariudentie/ikkuna1.svg',
-        thumbnail: 'jee',
-    }
+        original: '/partner_logos/TEK_logo.png',
+    },
+    {
+        original: '/partner_logos/TEK_logo.png',
+    },
+    {
+        original: '/partner_logos/TEK_logo.png',
+    },
+    {
+        original: '/partner_logos/TEK_logo.png',
+    },
+    {
+        original: '/partner_logos/TEK_logo.png',
+    },
+    {
+        original: '/partner_logos/TEK_logo.png',
+    },
 ]
 
 
@@ -22,7 +36,7 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <ImageGallery items={images} />;
+            <ImageGallery items={images} />
           </Container>
         </Section>
       </Layout>
