@@ -2,29 +2,15 @@ import styled from "styled-components";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import ReactMarkdown from "react-markdown";
-import ImageGallery from 'react-image-gallery';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
-const images = [
+const itemData = [
     {
-        original: '/partner_logos/TEK_logo.png',
-    },
-    {
-        original: '/partner_logos/TEK_logo.png',
-    },
-    {
-        original: '/partner_logos/TEK_logo.png',
-    },
-    {
-        original: '/partner_logos/TEK_logo.png',
-    },
-    {
-        original: '/partner_logos/TEK_logo.png',
-    },
-    {
-        original: '/partner_logos/TEK_logo.png',
-    },
-]
-
+        img: '\public\images\LL21.jpg',
+        title: 'LL21',
+    }
+];
 
 const Tervehdys = () => {
   return (
@@ -36,7 +22,18 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <ImageGallery items={images} />
+            <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+                {itemData.map((item) => (
+            	<ImageListItem key={item.img}>
+                <img
+                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.title}
+                    loading="lazy"
+                />
+                </ImageListItem>
+            ))}
+            </ImageList>
           </Container>
         </Section>
       </Layout>
