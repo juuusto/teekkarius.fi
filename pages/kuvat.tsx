@@ -30,18 +30,9 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <ImageList sx={{ width: 800, height: 800 }} cols={3} rowHeight={164}>
-                {itemData.map((item) => (
-            	<ImageListItem key={item.img}>
-                <img
-                    src={`${item.img}`}
-                    srcSet={`${item.img}`}
-                    alt={item.title}
-                    loading="lazy"
-                />
-                </ImageListItem>
+            {itemData.map((item) => (
+                <Img src={item.img} alt={item.title} />
             ))}
-            </ImageList>
           </Container>
         </Section>
       </Layout>
@@ -106,4 +97,8 @@ const StyledMarkdown = styled(ReactMarkdown)`
   }
 `;
 
+const Img = styled.img`
+  max-height: 400px;
+  border-radius: 1rem;
+`;
 export default Tervehdys;
