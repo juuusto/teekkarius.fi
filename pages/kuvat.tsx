@@ -30,9 +30,11 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
+            <ContactContainer>
             {itemData.map((item) => (
                 <Img key={item.img} src={item.img} alt={item.title} />
             ))}
+            </ContactContainer>
           </Container>
         </Section>
       </Layout>
@@ -100,5 +102,20 @@ const StyledMarkdown = styled(ReactMarkdown)`
 const Img = styled.img`
   max-height: 400px;
   border-radius: 1rem;
+`;
+
+const ContactContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+
+  margin-bottom: 8rem;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export default Tervehdys;
