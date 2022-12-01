@@ -168,7 +168,7 @@ const Tervehdys = () => {
                 <Img key={item.img} src={item.img} alt={item.title} />
             ))}
             </ContactContainer>
-            <H1>JA SITTEN HAJOTAAN #BREAKINGT150</H1>
+            <H1>#BREAKINGT150</H1>
             <ContactContainer>
               {hajottaa.map((item) => (
                 <Img key={item.img} src={item.img} alt={item.title} />
