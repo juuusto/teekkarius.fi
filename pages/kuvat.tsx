@@ -31,7 +31,7 @@ const Tervehdys = () => {
         <Section>
           <Container>
             {itemData.map((item) => (
-                <Img src={item.img} alt={item.title} />
+                <Img key={item.img} src={item.img} alt={item.title} />
             ))}
           </Container>
         </Section>
