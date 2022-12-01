@@ -6,6 +6,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 const itemData = [
+    {img: '/images/making150/brax.jpg', title: 'brax'},
     {img: '/images/making150/photo_2022-12-01_23-33-22.jpg', title: 'photo_2022-12-01_23-33-22'},
     {img: '/images/making150/photo_2022-12-01_23-34-58.jpg', title: 'photo_2022-12-01_23-34-58'},
     {img: '/images/making150/photo_2022-12-01_23-35-02.jpg', title: 'photo_2022-12-01_23-35-02'},
@@ -146,7 +147,6 @@ const itemData = [
     {img: '/images/making150/photo_2022-12-01_23-42-54.jpg', title: 'photo_2022-12-01_23-42-54'},
     {img: '/images/making150/photo_2022-12-01_23-42-58.jpg', title: 'photo_2022-12-01_23-42-58'},
     {img: '/images/making150/photo_2022-12-01_23-43-01.jpg', title: 'photo_2022-12-01_23-43-01'},
-    {img: '/images/making150/brax.jpg', title: 'brax'}
   ];
   const hajottaa = [
     {img: '/images/making150/mimi.jpg', title: 'mimi'},
