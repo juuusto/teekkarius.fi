@@ -146,7 +146,12 @@ const itemData = [
     {img: '/images/making150/photo_2022-12-01_23-42-54.jpg', title: 'photo_2022-12-01_23-42-54'},
     {img: '/images/making150/photo_2022-12-01_23-42-58.jpg', title: 'photo_2022-12-01_23-42-58'},
     {img: '/images/making150/photo_2022-12-01_23-43-01.jpg', title: 'photo_2022-12-01_23-43-01'},
-    ];
+    {img: '/images/making150/brax.jpg', title: 'brax'}
+  ];
+  const hajottaa = [
+    {img: '/images/making150/mimi.jpg', title: 'mimi'},
+    {img: '/images/making150/mikko.jpg', title: 'mikko'},
+  ];
 
 const Tervehdys = () => {
   return (
@@ -163,6 +168,12 @@ const Tervehdys = () => {
                 <Img key={item.img} src={item.img} alt={item.title} />
             ))}
             </ContactContainer>
+            <H1>JA SITTEN HAJOTAAN #BREAKINGT150</H1>
+            <ContactContainer>
+              {hajottaa.map((item) => (
+                <Img key={item.img} src={item.img} alt={item.title} />
+              ))}
+            </ContactContainer>  
           </Container>
         </Section>
       </Layout>
