@@ -30,7 +30,7 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <ImageList sx={{ width: 1000, height: 800 }} cols={3} rowHeight={164}>
+            <ImageList sx={{ width: 800, height: 800 }} cols={3} rowHeight={164}>
                 {itemData.map((item) => (
             	<ImageListItem key={item.img}>
                 <img
