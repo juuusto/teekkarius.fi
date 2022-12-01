@@ -7,9 +7,21 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 const itemData = [
     {
-        img: '\public\images\LL21.jpg',
+        img: '/public/images/LL21.jpg',
         title: 'LL21',
-    }
+    },
+    {
+        img: '/public/images/LL21.jpg',
+        title: 'LL21',
+    },
+    {
+        img: '/public/images/LL21.jpg',
+        title: 'LL21',
+    },
+    {
+        img: '/public/images/LL21.jpg',
+        title: 'LL21',
+    },
 ];
 
 const Tervehdys = () => {
