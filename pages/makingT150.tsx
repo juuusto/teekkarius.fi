@@ -164,7 +164,7 @@ const Tervehdys = () => {
         <Section>
           <Container>
             <ContactContainer>
-            {itemData.map((item) => (
+            {itemData.reverse().map((item) => (
                 <Img key={item.img} src={item.img} alt={item.title} />
             ))}
             </ContactContainer>
