@@ -14,11 +14,7 @@ const itemData = [
         img: '/images/LL21.jpg',
         title: 'LL21',
     },
-    {
-        img: '/images/LL21.jpg',
-        title: 'LL21',
-    },
-    {
+        {
         img: '/images/LL21.jpg',
         title: 'LL21',
     },
@@ -34,12 +30,12 @@ const Tervehdys = () => {
       <Layout navColor="portviini" imageUrl="" setImage={false}>
         <Section>
           <Container>
-            <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+            <ImageList sx={{ width: 1000, height: 800 }} cols={3} rowHeight={164}>
                 {itemData.map((item) => (
             	<ImageListItem key={item.img}>
                 <img
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.img}`}
+                    srcSet={`${item.img}`}
                     alt={item.title}
                     loading="lazy"
                 />
