@@ -151,6 +151,7 @@ const itemData = [
   const hajottaa = [
     {img: '/images/making150/mimi.jpg', title: 'mimi'},
     {img: '/images/making150/mikko.jpg', title: 'mikko'},
+    {img: '/images/making150/IMG_20221203_075559_323.jpg', title: 'l&j'},
   ];
 
 const Tervehdys = () => {
