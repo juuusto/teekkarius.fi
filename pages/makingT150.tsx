@@ -152,6 +152,7 @@ const itemData = [
     {img: '/images/making150/mimi.jpg', title: 'mimi'},
     {img: '/images/making150/mikko.jpg', title: 'mikko'},
     {img: '/images/making150/IMG_20221203_075559_323.jpg', title: 'l&j'},
+    {img: 'IMG_20221203_084342_868.jpg', title: 'l'},
   ];
 
 const Tervehdys = () => {
